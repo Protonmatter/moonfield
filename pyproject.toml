@@ -53,13 +53,21 @@ dev = [
     "pytest>=7.4",
     "pytest-cov>=4.1",
     "ruff>=0.4",
+    # Windows does not ship the IANA timezone database, so `ZoneInfo` there
+    # finds nothing and every zone silently becomes UTC. That is a real thing
+    # that happens to real learners -- `moonfield doctor` detects it and tells
+    # you to install this -- but the test suite must not be at its mercy.
+    #
+    # Note this is a *dev* dependency. Moonfield itself still installs with
+    # zero runtime dependencies, and the CI job that proves it still passes.
+    "tzdata; sys_platform == 'win32'",
 ]
 
 [project.urls]
-Homepage = "https://github.com/moonfield/moonfield"
-Documentation = "https://github.com/moonfield/moonfield/tree/main/docs"
-Issues = "https://github.com/moonfield/moonfield/issues"
-Discussions = "https://github.com/moonfield/moonfield/discussions"
+Homepage = "https://github.com/Protonmatter/moonfield"
+Documentation = "https://github.com/Protonmatter/moonfield/tree/main/docs"
+Issues = "https://github.com/Protonmatter/moonfield/issues"
+Discussions = "https://github.com/Protonmatter/moonfield/discussions"
 
 [project.scripts]
 # This is what creates the `moonfield` command in your terminal after you run

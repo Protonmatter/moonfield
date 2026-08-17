@@ -122,7 +122,17 @@ def parse_datetime(text: str, zone: str | _dt.tzinfo | None = None) -> _dt.datet
         2026-08-16T21:30:05Z        -> explicit UTC
         2026-08-16T21:30+01:00      -> explicit offset
 
-    ``zone`` supplies the timezone for the forms that do not carry one.
+    ``zone`` supplies the timezone for the forms that do not carry one. When
+    ``zone`` is None those forms are read as **UTC**, which is the same
+    convention :func:`ensure_utc` uses and for the same reason: a library
+    whose answer depends on the machine it runs on is a library you cannot
+    check anyone else's working against.
+
+    The command line does pass a zone -- your saved location's, or the one
+    from ``--timezone``, or failing both your computer's own -- because
+    someone typing a bare ``21:30`` at a terminal means half past nine
+    *here*. That is a deliberate choice made at the edge of the program,
+    where the user can see it, rather than hidden in here.
     """
     raw = text.strip()
     if not raw:
@@ -148,7 +158,13 @@ def parse_datetime(text: str, zone: str | _dt.tzinfo | None = None) -> _dt.datet
         )
 
     if parsed.tzinfo is None and not explicit_offset:
-        parsed = parsed.replace(tzinfo=resolve_zone(zone) if not isinstance(zone, _dt.tzinfo) else zone)
+        if zone is None:
+            tz: _dt.tzinfo = UTC
+        elif isinstance(zone, _dt.tzinfo):
+            tz = zone
+        else:
+            tz = resolve_zone(zone)
+        parsed = parsed.replace(tzinfo=tz)
     return ensure_utc(parsed)
 
 

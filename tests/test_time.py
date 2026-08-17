@@ -94,6 +94,22 @@ class TestParseDatetime:
         parsed = mtime.parse_datetime("2026-07-15T12:00", "Europe/Lisbon")
         assert parsed.hour == 11, "Lisbon is UTC+1 in July"
 
+    def test_no_zone_means_utc_not_the_local_clock(self):
+        """A bare time must not mean something different on my machine.
+
+        This is the whole reason the project computes in UTC. If parsing fell
+        back to the system timezone, this test would pass in London in winter
+        and fail everywhere else -- and so would a learner comparing their
+        numbers against the ones written in the lessons.
+        """
+        parsed = mtime.parse_datetime("2026-08-16T21:30")
+        assert parsed.tzinfo == mtime.UTC
+        assert (parsed.hour, parsed.minute) == (21, 30)
+
+    def test_a_tzinfo_object_works_as_well_as_a_name(self):
+        tz = dt.timezone(dt.timedelta(hours=-4))
+        assert mtime.parse_datetime("2026-08-16T21:30", tz).hour == 1
+
     def test_rubbish_gives_a_helpful_error(self):
         with pytest.raises(ValueError, match="could not understand"):
             mtime.parse_datetime("next tuesday")

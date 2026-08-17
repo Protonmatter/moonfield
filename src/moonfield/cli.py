@@ -112,7 +112,17 @@ def _need_location(args) -> Location | None:
 
 
 def _when(args) -> _dt.datetime:
-    """Resolve the instant a command should use."""
+    """Resolve the instant a command should use.
+
+    A time you type without a zone -- ``--date 2026-08-16T21:30`` -- is read
+    as civil time in the first of these that exists: ``--timezone``, your
+    saved location's timezone, your computer's own. Someone typing a bare
+    time at a terminal means that time where they are standing.
+
+    The library underneath makes the opposite choice and reads a bare time as
+    UTC, so that its results do not depend on whose machine ran it. Both are
+    right for their audience; the translation happens here.
+    """
     text = getattr(args, "date", None)
     if not text:
         return mtime.utc_now()
@@ -120,6 +130,8 @@ def _when(args) -> _dt.datetime:
     if zone is None:
         saved = load_location()
         zone = saved.timezone if saved else None
+    if zone is None:
+        zone = mtime.resolve_zone(None)
     return mtime.parse_datetime(text, zone)
 
 
@@ -186,13 +198,20 @@ def cmd_doctor(args) -> int:
     print(f"{BULLET}Offset from UTC: {hours:+.2f} hours")
     print(f"{BULLET}Julian Day now: {mtime.julian_day(now):.5f}")
 
+    # Importing zoneinfo always succeeds -- it has been in the standard
+    # library since Python 3.9. What can be missing is the IANA timezone
+    # *database* it reads, which Windows does not ship. So the only honest
+    # test is to look a real zone up and see whether it is found.
     try:
-        from zoneinfo import ZoneInfo  # noqa: F401
+        from zoneinfo import ZoneInfo
 
+        ZoneInfo("Europe/London")
         print(f"{BULLET}Timezone database available. OK")
-    except Exception:  # pragma: no cover - defensive
+    except Exception:
         ok = False
-        print(f"{BULLET}PROBLEM: no timezone database.")
+        print(f"{BULLET}PROBLEM: the IANA timezone database is missing.")
+        print(f"{BULLET}Without it, any --timezone you ask for falls back to")
+        print("       UTC, so displayed times can be wrong by hours.")
         print(f"{BULLET}Fix: pip install tzdata")
 
     print(heading("Location"))
@@ -1046,7 +1065,8 @@ def _add_common(parser: argparse.ArgumentParser, location: bool = True) -> None:
         "--date",
         metavar="WHEN",
         help="date or date and time, e.g. 2026-08-16 or 2026-08-16T21:30 "
-        "(default: now)",
+        "(default: now). A time with no zone is read as your local civil "
+        "time; add Z for UTC, or +01:00 for an explicit offset",
     )
     if location:
         parser.add_argument("--lat", help="latitude, north positive")

@@ -48,6 +48,25 @@ class TestDoctor:
         _, out, _ = run(capsys, "doctor")
         assert "Next step" in out
 
+    def test_detects_a_missing_timezone_database(self, capsys, monkeypatch):
+        """Windows ships no IANA database, and doctor must notice.
+
+        Importing `zoneinfo` succeeds everywhere -- it is standard library --
+        so an import test proves nothing. Only looking a zone up does. This
+        simulates the Windows-without-tzdata case that a real learner hits.
+        """
+        import zoneinfo
+
+        def no_database(*args, **kwargs):
+            raise zoneinfo.ZoneInfoNotFoundError("no time zone found")
+
+        monkeypatch.setattr(zoneinfo, "ZoneInfo", no_database)
+
+        code, out, _ = run(capsys, "doctor")
+        assert "timezone database is missing" in out
+        assert "pip install tzdata" in out
+        assert code != 0, "a missing timezone database is a real problem"
+
 
 class TestPhase:
     def test_runs_without_a_location(self, capsys):
