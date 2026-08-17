@@ -28,3 +28,6 @@ htmlcov/
 # Moonfield working files
 *.local.json
 observations/
+
+# Built site output from tools/build_site.py
+_site/

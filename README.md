@@ -194,10 +194,11 @@ Supporting material: [background](docs/background/) ·
 [command cheat sheet](docs/troubleshooting/cheat-sheet.md)
 
 **In your browser, nothing to install:**
-[the interactives](https://protonmatter.github.io/moonfield/) ·
-[the Longitude Game](https://protonmatter.github.io/moonfield/longitude-game/).
-Both are plain HTML that load nothing from anyone else's server, so they work
-on a train, behind a school filter, or with the wifi off.
+[read the whole curriculum](https://protonmatter.github.io/moonfield/learn/) ·
+[play the Longitude Game](https://protonmatter.github.io/moonfield/longitude-game/).
+Every written lesson is published as a page, and the interactives are plain
+HTML that load nothing from anyone else's server, so they work on a train,
+behind a school filter, or with the wifi off.
 
 The "Planned" modules have scaffolding, a stated scope and open issues. They
 are deliberately visible rather than hidden, so you can see where the path
@@ -265,10 +266,11 @@ moonfield/
 │   ├── observer.py             Altitude, azimuth, rise and set
 │   ├── tides.py                The equilibrium model and its limits
 │   └── cli.py                  The `moonfield` command
-├── tests/                      290 tests; many check physics, not stored numbers
+├── tests/                      323 tests; many check physics, not stored numbers
 ├── examples/                   Short scripts you can read and modify
 ├── docs/                       The curriculum
-└── site/                       GitHub Pages: interactives and the Longitude Game
+├── site/                       Landing page and the browser interactives
+└── tools/build_site.py         Renders docs/ and site/ into the published site
 ```
 
 ---

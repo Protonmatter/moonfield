@@ -43,6 +43,8 @@ ol.modules{list-style:none;padding:0;font-family:var(--display);font-size:.95rem
 ol.modules li{display:flex;gap:1rem;padding:.6rem 0;border-bottom:var(--rule);align-items:baseline}
 ol.modules .n{color:var(--sounding);font-size:.8rem;min-width:2rem}
 ol.modules .s{margin-left:auto;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+ol.modules a{text-decoration:none;border-bottom:1px solid transparent}
+ol.modules a:hover{border-bottom-color:var(--lamp)}
 .ready{color:#5fbf8f}.planned{color:var(--sounding)}
 .note{border-left:3px solid var(--rocks);padding:.2rem 0 .2rem 1.2rem;margin-top:2rem}
 footer{padding:3rem 0 0;color:var(--sounding);font-size:.95rem}
@@ -59,15 +61,25 @@ footer{padding:3rem 0 0;color:var(--sounding);font-size:.95rem}
 
   <div class="term"><span class="c">$ moonfield phase</span>
 
-       _.-''-._
-     .'  <span class="o">::::.</span> `.
-    :   <span class="o">::::::::</span>  :
-    :   <span class="o">::::::::</span>  :
-     `.  <span class="o">::::::</span> .'
-       `-.____.-'
+<span class="o">Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
 
-  <span class="o">Waxing crescent · 16.4% lit · 4.1 days old</span>
-  <span class="o">Sets 22:14 · 41° W of the Sun</span></div>
+  Phase:        Waxing Crescent
+  Illuminated:  19.9% of the visible disc
+  Age:          4 days 3 hours 22 minutes since new Moon
+  Trend:        waxing (growing)
+  Distance:     387,412 km
+
+        ........##
+     .............###
+    ...............###
+   ................####
+  ..................####
+  ..................####
+  ..................####
+   ................####
+    ...............###
+     .............###
+        ........##</span></div>
 </header>
 
 <section>
@@ -93,20 +105,21 @@ footer{padding:3rem 0 0;color:var(--sounding);font-size:.95rem}
 <section>
   <p class="eyebrow">Curriculum</p>
   <h2>Thirteen modules, six written</h2>
+  <p>Every written module is readable here, in full, with nothing to install. <a href="learn/">Start at the beginning</a>, or pick a module.</p>
   <ol class="modules">
-    <li><span class="n">00</span><span>Start here</span><span class="s ready">Ready</span></li>
-    <li><span class="n">01</span><span>Time and place</span><span class="s ready">Ready</span></li>
-    <li><span class="n">02</span><span>Moon phases</span><span class="s ready">Ready</span></li>
-    <li><span class="n">03</span><span>The Earth–Moon system</span><span class="s ready">Ready</span></li>
-    <li><span class="n">04</span><span>Tides</span><span class="s ready">Ready</span></li>
-    <li><span class="n">05</span><span>Your local sky</span><span class="s ready">Ready</span></li>
-    <li><span class="n">06</span><span>Seasons</span><span class="s ready">Ready</span></li>
-    <li><span class="n">07</span><span>Planets</span><span class="s planned">Planned</span></li>
-    <li><span class="n">08</span><span>Constellations</span><span class="s planned">Planned</span></li>
-    <li><span class="n">09</span><span>The physics underneath</span><span class="s planned">Planned</span></li>
-    <li><span class="n">10</span><span>Orbital mechanics</span><span class="s planned">Planned</span></li>
-    <li><span class="n">11</span><span>Rocketry</span><span class="s planned">Planned</span></li>
-    <li><span class="n">12</span><span>Visualisation</span><span class="s planned">Planned</span></li>
+    <li><span class="n">00</span><a href="learn/00-start-here/">Start here</a><span class="s ready">Ready</span></li>
+    <li><span class="n">01</span><a href="learn/01-time-and-place/">Time and place</a><span class="s ready">Ready</span></li>
+    <li><span class="n">02</span><a href="learn/02-moon-phases/">Moon phases</a><span class="s ready">Ready</span></li>
+    <li><span class="n">03</span><a href="learn/03-earth-moon-system/">The Earth–Moon system</a><span class="s ready">Ready</span></li>
+    <li><span class="n">04</span><a href="learn/04-tides/">Tides</a><span class="s ready">Ready</span></li>
+    <li><span class="n">05</span><a href="learn/05-local-sky/">Your local sky</a><span class="s ready">Ready</span></li>
+    <li><span class="n">06</span><a href="learn/06-seasons/">Seasons</a><span class="s ready">Ready</span></li>
+    <li><span class="n">07</span><a href="learn/07-planets/">Planets</a><span class="s planned">Planned</span></li>
+    <li><span class="n">08</span><a href="learn/08-constellations/">Constellations</a><span class="s planned">Planned</span></li>
+    <li><span class="n">09</span><a href="learn/09-physics/">The physics underneath</a><span class="s planned">Planned</span></li>
+    <li><span class="n">10</span><a href="learn/10-orbital-mechanics/">Orbital mechanics</a><span class="s planned">Planned</span></li>
+    <li><span class="n">11</span><a href="learn/11-rocketry/">Rocketry</a><span class="s planned">Planned</span></li>
+    <li><span class="n">12</span><a href="learn/12-visualization/">Visualisation</a><span class="s planned">Planned</span></li>
   </ol>
 </section>
 
@@ -127,6 +140,11 @@ footer{padding:3rem 0 0;color:var(--sounding);font-size:.95rem}
 <span class="c">python3 -m venv .venv && source .venv/bin/activate</span>
 <span class="c">pip install -e ".[dev]"</span>
 <span class="c">moonfield doctor</span></div>
+
+  <p style="margin-top:1.8rem">Then open
+  <a href="learn/00-start-here/first-command.html">your first command</a> and make a
+  prediction before you run it. If you would rather read before installing anything,
+  the whole curriculum is <a href="learn/">here in your browser</a>.</p>
 
   <div class="note">
     <p style="margin:0"><strong>Not for navigation.</strong> Moonfield is a teaching tool.

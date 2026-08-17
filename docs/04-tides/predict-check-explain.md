@@ -22,7 +22,7 @@ Do not look anything up yet. That is the whole point of the exercise.
 Write these down:
 
 1. **The time and date** you are asking about
-2. **Your location**: or a tide station you have chosen from `data/`
+2. **Your location**, or a tide station you have chosen from `data/`
 3. **The Moon's phase**: `moonfield phase`
 4. **When the Moon crosses your meridian**: `moonfield moon`, the transit time
 
