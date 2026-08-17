@@ -66,24 +66,33 @@ Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
   Illuminated:  19.9% of the visible disc
   Age:          4 days 3 hours 22 minutes since new Moon
   Trend:        waxing (growing)
-  Distance:     382,283 km
+  Distance:     387,412 km
 
         ........##
-     ..............##
-    ................##
-   ..................##
-  ...................###
-  ...................###
-  ...................###
-   ..................##
-    ................##
-     ..............##
+     .............###
+    ...............###
+   ................####
+  ..................####
+  ..................####
+  ..................####
+   ................####
+    ...............###
+     .............###
         ........##
 
   Coming up:
-    First Quarter   2026-08-20 03:47 BST   (in 3 days 5 hours)
-    Full Moon       2026-08-28 05:19 BST   (in 11 days 7 hours)
+    First Quarter   2026-08-20 03:47 BST   (in 3 days 5 hours 47 minutes)
+    Full Moon       2026-08-28 05:19 BST   (in 11 days 7 hours 20 minutes)
+    Last Quarter    2026-09-04 08:52 BST   (in 18 days 10 hours 53 minutes)
+    New Moon        2026-09-11 04:27 BST   (in 25 days 6 hours 28 minutes)
 ```
+
+That block is real output, not an illustration. A test in
+[`tests/test_readme.py`](tests/test_readme.py) runs that exact command and
+fails if a single character here has drifted from what the code prints —
+because a front page showing numbers the engine stopped producing would be a
+strange first impression for a project about checking your numbers against
+reality.
 
 Now the important part. Ask it to show its working:
 
@@ -240,7 +249,7 @@ moonfield/
 │   ├── observer.py             Altitude, azimuth, rise and set
 │   ├── tides.py                The equilibrium model and its limits
 │   └── cli.py                  The `moonfield` command
-├── tests/                      284 tests; many check physics, not stored numbers
+├── tests/                      290 tests; many check physics, not stored numbers
 ├── examples/                   Short scripts you can read and modify
 ├── docs/                       The curriculum
 └── site/                       GitHub Pages: interactives and the Longitude Game

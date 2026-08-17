@@ -135,10 +135,40 @@ def _when(args) -> _dt.datetime:
     return mtime.parse_datetime(text, zone)
 
 
-def _fmt(when: _dt.datetime | None, location: Location | None) -> str:
+def _display_zone(args, location: Location | None = None) -> _dt.tzinfo:
+    """Decide which timezone to *show* results in.
+
+    In order: an explicit --timezone, then your saved location's, then your
+    computer's own. --timezone comes first because you asked for it directly,
+    and it has to work on commands like `phase` that need no location at all
+    -- otherwise the flag is advertised in the help of every command and
+    quietly does nothing on most of them.
+
+    A zone we cannot find is reported rather than swallowed. Falling back to
+    UTC without a word means the times on screen are wrong by whole hours and
+    look perfectly reasonable, which is the worst way for a teaching tool to
+    fail.
+    """
+    name = getattr(args, "timezone", None)
+    if name:
+        resolved = mtime.resolve_zone(name)
+        if getattr(resolved, "key", None) != name:
+            print(
+                f"Warning: '{name}' is not in this system's timezone database, "
+                "so times below are shown in UTC.\n"
+                "Names look like 'Europe/Lisbon' or 'America/Argentina/Cordoba'. "
+                "On Windows, try: pip install tzdata",
+                file=sys.stderr,
+            )
+        return resolved
+    if location is not None:
+        return location.zone
+    return mtime.resolve_zone(None)
+
+
+def _fmt(when: _dt.datetime | None, zone: _dt.tzinfo) -> str:
     if when is None:
         return "--:--"
-    zone = location.zone if location else mtime.UTC
     local = when.astimezone(zone)
     label = local.strftime("%Z") or "UTC"
     return f"{local.strftime('%H:%M')} {label}"
@@ -271,9 +301,10 @@ def cmd_phase(args) -> int:
     else:
         location = load_location()
     southern = bool(location and location.latitude < 0)
+    zone = _display_zone(args, location)
     info = phase_engine.compute(when)
 
-    print(f"Moon phase for {mtime.format_instant(when, location.zone if location else None)}")
+    print(f"Moon phase for {mtime.format_instant(when, zone)}")
     print()
     print(f"  Phase:        {info.name}")
     print(f"  Illuminated:  {info.illumination_percent:.1f}% of the visible disc")
@@ -291,8 +322,8 @@ def cmd_phase(args) -> int:
 
     print("\n  Coming up:")
     for name, (moment, days) in info.next_phases.items():
-        stamp = moment.astimezone(location.zone) if location else moment
-        label = stamp.strftime("%Y-%m-%d %H:%M %Z") if location else stamp.strftime(
+        stamp = moment.astimezone(zone)
+        label = stamp.strftime("%Y-%m-%d %H:%M %Z").rstrip() or stamp.strftime(
             "%Y-%m-%d %H:%M UTC"
         )
         print(f"    {name:<15} {label}   (in {mtime.format_duration(days)})")
@@ -369,9 +400,10 @@ def cmd_now(args) -> int:
     if location is None:
         return 1
     when = _when(args)
+    zone = _display_zone(args, location)
 
     print(f"Sky report for {location.describe()}")
-    print(f"Time: {mtime.format_instant(when, location.zone)}")
+    print(f"Time: {mtime.format_instant(when, zone)}")
 
     sun_h = observer.sun_position(location, when)
     moon_h = observer.moon_position(location, when)
@@ -381,9 +413,9 @@ def cmd_now(args) -> int:
 
     print(heading("Sun"))
     print(f"{BULLET}{sun_h.describe()}")
-    print(f"{BULLET}Rise {_fmt(sun_rs.rise, location)}   "
-          f"Noon {_fmt(sun_rs.transit, location)}   "
-          f"Set {_fmt(sun_rs.setting, location)}")
+    print(f"{BULLET}Rise {_fmt(sun_rs.rise, zone)}   "
+          f"Noon {_fmt(sun_rs.transit, zone)}   "
+          f"Set {_fmt(sun_rs.setting, zone)}")
     if sun_rs.transit_altitude is not None:
         print(f"{BULLET}Highest today: {sun_rs.transit_altitude:.1f} deg above the horizon")
     if sun_rs.note:
@@ -392,9 +424,9 @@ def cmd_now(args) -> int:
     print(heading("Moon"))
     print(f"{BULLET}{moon_h.describe()}")
     print(f"{BULLET}{info.name}, {info.illumination_percent:.0f}% illuminated")
-    print(f"{BULLET}Rise {_fmt(moon_rs.rise, location)}   "
-          f"Transit {_fmt(moon_rs.transit, location)}   "
-          f"Set {_fmt(moon_rs.setting, location)}")
+    print(f"{BULLET}Rise {_fmt(moon_rs.rise, zone)}   "
+          f"Transit {_fmt(moon_rs.transit, zone)}   "
+          f"Set {_fmt(moon_rs.setting, zone)}")
     if moon_rs.note:
         print(f"{BULLET}Note: the Moon {moon_rs.note}")
 
@@ -411,7 +443,7 @@ def cmd_now(args) -> int:
     else:
         print("The Moon is below your horizon right now.")
         if moon_rs.rise and moon_rs.rise > when:
-            print(f"It rises at {_fmt(moon_rs.rise, location)}.")
+            print(f"It rises at {_fmt(moon_rs.rise, zone)}.")
 
     print("\nRemember: 'degrees above the horizon' is easy to estimate with your")
     print("hand at arm's length. A fist is about 10 degrees; a thumb about 2.")
@@ -426,9 +458,10 @@ def cmd_sun(args) -> int:
     pos = sun_engine.position(when)
     horiz = observer.sun_position(location, when)
     rs = observer.sun_rise_set(location, when)
+    zone = _display_zone(args, location)
 
     print(f"Sun from {location.describe()}")
-    print(f"Time: {mtime.format_instant(when, location.zone)}")
+    print(f"Time: {mtime.format_instant(when, zone)}")
     print(heading("In your sky"))
     print(f"{BULLET}{horiz.describe()}")
     print(heading("On the celestial sphere"))
@@ -441,9 +474,9 @@ def cmd_sun(args) -> int:
     print("       (how far real solar noon is from clock noon, before timezones)")
 
     print(heading("Today"))
-    print(f"{BULLET}Sunrise      {_fmt(rs.rise, location)}")
-    print(f"{BULLET}Solar noon   {_fmt(rs.transit, location)}")
-    print(f"{BULLET}Sunset       {_fmt(rs.setting, location)}")
+    print(f"{BULLET}Sunrise      {_fmt(rs.rise, zone)}")
+    print(f"{BULLET}Solar noon   {_fmt(rs.transit, zone)}")
+    print(f"{BULLET}Sunset       {_fmt(rs.setting, zone)}")
     if rs.rise and rs.setting:
         length = (rs.setting - rs.rise).total_seconds() / 3600.0
         if length < 0:
@@ -474,9 +507,10 @@ def cmd_moon(args) -> int:
     horiz = observer.moon_position(location, when)
     rs = observer.moon_rise_set(location, when)
     info = phase_engine.compute(when)
+    zone = _display_zone(args, location)
 
     print(f"Moon from {location.describe()}")
-    print(f"Time: {mtime.format_instant(when, location.zone)}")
+    print(f"Time: {mtime.format_instant(when, zone)}")
     print(heading("In your sky"))
     print(f"{BULLET}{horiz.describe()}")
     print(f"{BULLET}{info.name}, {info.illumination_percent:.1f}% illuminated")
@@ -490,9 +524,9 @@ def cmd_moon(args) -> int:
     print(f"{BULLET}Parallax:          {pos.parallax:.4f} deg")
 
     print(heading("Today"))
-    print(f"{BULLET}Moonrise  {_fmt(rs.rise, location)}")
-    print(f"{BULLET}Transit   {_fmt(rs.transit, location)}")
-    print(f"{BULLET}Moonset   {_fmt(rs.setting, location)}")
+    print(f"{BULLET}Moonrise  {_fmt(rs.rise, zone)}")
+    print(f"{BULLET}Transit   {_fmt(rs.transit, zone)}")
+    print(f"{BULLET}Moonset   {_fmt(rs.setting, zone)}")
     if rs.note:
         print(f"{BULLET}Note: the Moon {rs.note}")
     print("\nThe Moon rises roughly 50 minutes later each day, so on some days it")
@@ -516,9 +550,10 @@ def cmd_frame(args) -> int:
 
     moon_h = observer.moon_position(location, when)
     sun_h = observer.sun_position(location, when)
+    zone = _display_zone(args, location)
 
     print(f"Observer frame for {location.describe()}")
-    print(f"Time: {mtime.format_instant(when, location.zone)}")
+    print(f"Time: {mtime.format_instant(when, zone)}")
 
     print(heading("Your frame"))
     print(f"{BULLET}Latitude  {location.latitude:+.4f} deg ({location.hemisphere} hemisphere)")
@@ -765,15 +800,16 @@ def _tide_explain() -> int:
 
 
 def _tide_rough(estimate, location: Location, args) -> int:
+    zone = _display_zone(args, location)
     print("ROUGH TIDE ESTIMATE -- FOR LEARNING ONLY, NOT FOR NAVIGATION")
     print("=" * 60)
     print(f"\n{location.describe()}")
-    print(f"Time: {mtime.format_instant(estimate.when, location.zone)}")
+    print(f"Time: {mtime.format_instant(estimate.when, zone)}")
 
     print(heading("The sky right now"))
     if estimate.moon_transit:
         print(f"{BULLET}Moon crosses your meridian at "
-              f"{_fmt(estimate.moon_transit, location)}")
+              f"{_fmt(estimate.moon_transit, zone)}")
     print(f"{BULLET}{estimate.spring_neap_label}")
     print(f"{BULLET}Relative range factor: {estimate.range_factor:.2f} "
           f"(1.00 would be an average tide)")
@@ -784,13 +820,13 @@ def _tide_rough(estimate, location: Location, args) -> int:
     print(f"{BULLET}Roughly {estimate.fraction * 100:.0f}% of the way from low to high")
     if estimate.next_event:
         print(f"{BULLET}Next {estimate.next_event.kind} water: "
-              f"{_fmt(estimate.next_event.when, location)} "
+              f"{_fmt(estimate.next_event.when, zone)} "
               f"(in {estimate.hours_to_next:.1f} hours)")
 
     print(heading("Predicted events"))
     for event in estimate.events:
         marker = ">" if event is estimate.next_event else " "
-        stamp = event.when.astimezone(location.zone)
+        stamp = event.when.astimezone(zone)
         print(f"  {marker} {stamp.strftime('%a %d %b %H:%M %Z')}  "
               f"{event.kind.upper():<5} ({event.driver})")
 
@@ -817,8 +853,12 @@ def _tide_compare(estimate, location: Location, args) -> int:
             "    moonfield tide compare --observed 2026-08-16T09:14",
         )
 
+    zone = _display_zone(args, location)
     try:
-        observed = [mtime.parse_datetime(t, location.timezone) for t in args.observed]
+        # Your observed times are read in the zone you are shown results in.
+        # A high water you wrote down at 09:14 is 09:14 on the clock you were
+        # looking at, not 09:14 UTC.
+        observed = [mtime.parse_datetime(t, zone) for t in args.observed]
     except ValueError as exc:
         return _fail(str(exc), "Use a form like 2026-08-16T09:14")
 
@@ -833,11 +873,11 @@ def _tide_compare(estimate, location: Location, args) -> int:
     print(heading("Comparison"))
     print(f"  {'Observed':<22} {'Model predicted':<22} {'Model error':>12}")
     for row in rows:
-        obs = row["observed"].astimezone(location.zone).strftime("%Y-%m-%d %H:%M")
+        obs = row["observed"].astimezone(zone).strftime("%Y-%m-%d %H:%M")
         if row["predicted"] is None:
             print(f"  {obs:<22} {'(no prediction)':<22} {'--':>12}")
             continue
-        pred = row["predicted"].astimezone(location.zone).strftime("%Y-%m-%d %H:%M")
+        pred = row["predicted"].astimezone(zone).strftime("%Y-%m-%d %H:%M")
         delta = row["delta_hours"]
         sign = "late" if delta > 0 else "early"
         print(f"  {obs:<22} {pred:<22} {abs(delta):>7.2f} h {sign}")

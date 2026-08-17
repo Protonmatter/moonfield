@@ -68,6 +68,48 @@ class TestDoctor:
         assert code != 0, "a missing timezone database is a real problem"
 
 
+class TestTimezoneFlag:
+    """--timezone is offered on every command, so it must work on every command.
+
+    It used to reach the display only when --lat and --lon were passed as
+    well, because it was read off the ad-hoc Location those flags build. On
+    `phase`, which needs no location at all, asking for Europe/London got you
+    your own clock instead -- and the "Coming up" list came out in UTC, so one
+    screen showed two different timezones with no hint that it had.
+    """
+
+    def test_phase_honours_it_with_no_location(self, capsys):
+        _, out, _ = run(
+            capsys, "phase", "--no-art",
+            "--date", "2026-08-16T21:00:00Z", "--timezone", "Europe/London",
+        )
+        assert "22:00 BST" in out, "BST is UTC+1 in August"
+
+    def test_the_whole_screen_uses_one_zone(self, capsys):
+        _, out, _ = run(
+            capsys, "phase", "--no-art",
+            "--date", "2026-08-16T21:00:00Z", "--timezone", "Europe/London",
+        )
+        coming_up = out.split("Coming up:")[1]
+        assert "BST" in coming_up
+        assert "UTC" not in coming_up, "the header said BST; these must not be UTC"
+
+    def test_it_beats_a_saved_location(self, capsys):
+        # The autouse isolated_config fixture keeps this out of the real config.
+        run(capsys, "config", "set-location", "--lat", "51.48", "--lon", "0.0",
+            "--timezone", "Europe/London")
+        _, out, _ = run(
+            capsys, "sun", "--date", "2026-08-16T02:00:00Z",
+            "--timezone", "Australia/Perth",
+        )
+        assert "AWST" in out, "an explicit --timezone must win over the saved one"
+
+    def test_an_unknown_zone_says_so(self, capsys):
+        _, out, err = run(capsys, "phase", "--no-art", "--timezone", "Mars/Olympus")
+        assert "not in this system's timezone database" in err
+        assert "tzdata" in err, "tell a Windows user how to fix it"
+
+
 class TestPhase:
     def test_runs_without_a_location(self, capsys):
         """Phase is geocentric, so it must work before you set a location."""
