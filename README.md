@@ -193,6 +193,12 @@ Supporting material: [background](docs/background/) ·
 [glossary](docs/troubleshooting/glossary.md) ·
 [command cheat sheet](docs/troubleshooting/cheat-sheet.md)
 
+**In your browser, nothing to install:**
+[the interactives](https://protonmatter.github.io/moonfield/) ·
+[the Longitude Game](https://protonmatter.github.io/moonfield/longitude-game/).
+Both are plain HTML that load nothing from anyone else's server, so they work
+on a train, behind a school filter, or with the wifi off.
+
 The "Planned" modules have scaffolding, a stated scope and open issues. They
 are deliberately visible rather than hidden, so you can see where the path
 leads — and so you can help build it.

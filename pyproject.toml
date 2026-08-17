@@ -65,6 +65,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/Protonmatter/moonfield"
+Interactives = "https://protonmatter.github.io/moonfield/"
 Documentation = "https://github.com/Protonmatter/moonfield/tree/main/docs"
 Issues = "https://github.com/Protonmatter/moonfield/issues"
 Discussions = "https://github.com/Protonmatter/moonfield/discussions"
