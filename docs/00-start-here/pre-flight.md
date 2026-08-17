@@ -165,7 +165,7 @@ Beyond the doctor, confirm these yourself once:
 ## Getting stuck?
 
 [Getting Unstuck](../troubleshooting/getting-unstuck.md) ·
-[Discussions](https://github.com/moonfield/moonfield/discussions)
+[Discussions](https://github.com/Protonmatter/moonfield/discussions)
 
 ## Go deeper
 

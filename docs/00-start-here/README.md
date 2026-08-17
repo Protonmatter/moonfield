@@ -49,6 +49,6 @@ That is expected, and it is not a sign you are bad at this. Go to
 [Getting Unstuck](../troubleshooting/getting-unstuck.md), which is organised by
 symptom rather than by cause.
 
-If that does not help, [open a Discussion](https://github.com/moonfield/moonfield/discussions).
+If that does not help, [open a Discussion](https://github.com/Protonmatter/moonfield/discussions).
 Learning questions belong there and are always welcome. You do not need to
 apologise for asking, and you do not need to prove you tried hard enough first.

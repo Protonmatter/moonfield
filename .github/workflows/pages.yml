@@ -1,0 +1,62 @@
+# Publish the interactives in site/ to GitHub Pages.
+#
+# GitHub's built-in "deploy from a branch" option can only publish the repo
+# root or docs/. Ours is neither: docs/ is the written curriculum, and the
+# browser interactives live in site/. So we upload site/ ourselves.
+#
+# The interactives are deliberately plain HTML with no build step, no bundler
+# and no external requests -- the same promise the Python side makes. If this
+# workflow ever grows an `npm install`, something has gone wrong.
+
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the interactives are self-contained
+        # A learner may be working offline, on a train, or behind a filter
+        # that blocks CDNs. If a page pulls a script or font from someone
+        # else's server, it can break for them and we would never see it.
+        #
+        # Ordinary <a href> links out to GitHub are fine -- those are the
+        # reader choosing to leave. What must not appear is anything the page
+        # *fetches on load*: scripts, stylesheets, fonts, images, iframes.
+        run: |
+          if grep -rInE 'src="https?://|<link[^>]+href="https?://|url\(https?://|@import[^;]*https?://' site/ ; then
+            echo "::error::site/ must not fetch anything from an external host."
+            exit 1
+          fi
+          echo "Nothing loaded from outside the repo. OK"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

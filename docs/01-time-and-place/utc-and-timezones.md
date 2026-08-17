@@ -221,7 +221,7 @@ on the end of `2026-08-16T21:00:00Z` means exactly this.
 ## Getting stuck?
 
 [Getting Unstuck](../troubleshooting/getting-unstuck.md) ·
-[Discussions](https://github.com/moonfield/moonfield/discussions)
+[Discussions](https://github.com/Protonmatter/moonfield/discussions)
 
 ## Go deeper
 

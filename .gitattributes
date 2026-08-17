@@ -1,0 +1,26 @@
+# Line endings.
+#
+# Windows editors traditionally end lines with two characters (CR LF) where
+# macOS and Linux use one (LF). Without this file, a Windows learner can clone
+# the repo, change nothing, and still see every line of every file marked as
+# modified -- which is baffling the first time it happens, and looks like you
+# broke something.
+#
+# `text=auto eol=lf` tells Git to store everything with LF and hand your editor
+# whatever it needs. You should never have to think about it again.
+* text=auto eol=lf
+
+# Files that are not text at all. Git must not "fix" the line endings inside
+# these, because there are no line endings inside these -- only bytes that
+# would be corrupted by the attempt.
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+
+# Tide observations are real measurements. Keeping them LF means the numbers a
+# learner in Hobart commits are byte-identical to the ones read in Halifax.
+*.csv text eol=lf

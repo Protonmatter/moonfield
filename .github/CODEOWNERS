@@ -7,9 +7,9 @@
 # assessment rubrics, marking schemes) lives in a separate private repository.
 # See docs/instructor/ for how that separation works.
 
-*                           @OWNER
+*                           @Protonmatter
 
-/src/                       @OWNER
-/tests/                     @OWNER
-/docs/                      @OWNER
-/.github/                   @OWNER
+/src/                       @Protonmatter
+/tests/                     @Protonmatter
+/docs/                      @Protonmatter
+/.github/                   @Protonmatter

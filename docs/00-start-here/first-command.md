@@ -218,7 +218,7 @@ If it disagrees badly, the most likely causes in order are:
 2. You are comparing different instants (an almanac's "today" may be a
    different UTC day from yours)
 3. A genuine bug — in which case please
-   [open an issue](https://github.com/moonfield/moonfield/issues), including
+   [open an issue](https://github.com/Protonmatter/moonfield/issues), including
    both numbers and your `moonfield doctor` output
 
 ---
@@ -272,7 +272,7 @@ machine.
 - `command not found: moonfield` → your virtual environment is not active. See
   [Getting Unstuck](../troubleshooting/getting-unstuck.md).
 - Times look wrong by hours → [Time and place](../01-time-and-place/).
-- Anything else → [Discussions](https://github.com/moonfield/moonfield/discussions).
+- Anything else → [Discussions](https://github.com/Protonmatter/moonfield/discussions).
 
 ## Go deeper
 

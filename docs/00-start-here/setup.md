@@ -7,7 +7,7 @@ understanding what each step did.
 
 If a step fails, do not skip it. Go to
 [Getting Unstuck](../troubleshooting/getting-unstuck.md) or
-[open a Discussion](https://github.com/moonfield/moonfield/discussions). A
+[open a Discussion](https://github.com/Protonmatter/moonfield/discussions). A
 broken environment will make every later lesson confusing in ways that look
 like astronomy problems but are not.
 
@@ -127,7 +127,7 @@ updates easily, but everything else works. You can install Git later.
 ## Step 3: clone the repository
 
 ```bash
-git clone https://github.com/moonfield/moonfield.git
+git clone https://github.com/Protonmatter/moonfield.git
 cd moonfield
 ```
 
@@ -359,7 +359,7 @@ To leave the virtual environment: `deactivate`.
 - [Windows-specific problems](../troubleshooting/windows.md)
 - [macOS-specific problems](../troubleshooting/macos.md)
 - [Linux and WSL problems](../troubleshooting/linux.md)
-- [Discussions](https://github.com/moonfield/moonfield/discussions) — ask a human
+- [Discussions](https://github.com/Protonmatter/moonfield/discussions) — ask a human
 
 ## Go deeper
 

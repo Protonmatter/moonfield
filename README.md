@@ -1,5 +1,10 @@
 # Moonfield
 
+[![CI](https://github.com/Protonmatter/moonfield/actions/workflows/ci.yml/badge.svg)](https://github.com/Protonmatter/moonfield/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-green)](LICENSE)
+[![Runtime dependencies: none](https://img.shields.io/badge/runtime%20dependencies-none-brightgreen)](pyproject.toml)
+
 > **Mission:** Moonfield teaches the sky by running code you fully understand.
 >
 > **Method:** Observe → predict → learn → run → change → observe → validate → explain.
@@ -12,7 +17,7 @@ physics, orbital mechanics, rocketry and 3D visualisation.
 It assumes you know none of it yet. Not Python, not Git, not virtual
 environments, not UTC, not coordinate systems, not trigonometry. If a lesson
 here ever makes you feel you *should already know* something, that is a bug in
-the lesson. [Please tell us](https://github.com/moonfield/moonfield/issues).
+the lesson. [Please tell us](https://github.com/Protonmatter/moonfield/issues).
 
 ---
 
@@ -38,7 +43,7 @@ them, that is fine — [`docs/00-start-here/setup.md`](docs/00-start-here/setup.
 walks through it for Windows, macOS and Linux, assuming nothing.
 
 ```bash
-git clone https://github.com/moonfield/moonfield.git
+git clone https://github.com/Protonmatter/moonfield.git
 cd moonfield
 
 python3 -m venv .venv                 # Windows PowerShell: python -m venv .venv
@@ -235,7 +240,7 @@ moonfield/
 │   ├── observer.py             Altitude, azimuth, rise and set
 │   ├── tides.py                The equilibrium model and its limits
 │   └── cli.py                  The `moonfield` command
-├── tests/                      268 tests; many check physics, not stored numbers
+├── tests/                      284 tests; many check physics, not stored numbers
 ├── examples/                   Short scripts you can read and modify
 ├── docs/                       The curriculum
 └── site/                       GitHub Pages: interactives and the Longitude Game
@@ -257,10 +262,10 @@ The most valuable contributions are often not code:
 - A prediction of yours that did not match reality, with the numbers
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Issues labelled
-[`good first issue`](https://github.com/moonfield/moonfield/labels/good%20first%20issue)
+[`good first issue`](https://github.com/Protonmatter/moonfield/labels/good%20first%20issue)
 are sized for a first-time contributor.
 
-**Questions go in [Discussions](https://github.com/moonfield/moonfield/discussions),
+**Questions go in [Discussions](https://github.com/Protonmatter/moonfield/discussions),
 not Issues.** "I don't understand why the Moon is where it is" is a great
 Discussion. It is not a bug, and we would rather you asked.
 
