@@ -73,7 +73,9 @@ Two things, both from the 23.4° axial tilt:
 
 **1. The angle of the light.** Sunlight arriving at 60° above the horizon is
 concentrated on a small patch of ground. The same beam arriving at 15° is
-smeared over about four times the area. Same energy, quartered intensity.
+smeared over about three and a half times the area, because the intensity
+follows the sine of the altitude and sin 60° / sin 15° is 3.35. Same energy,
+spread thin.
 
 ```bash
 moonfield sun --date 2026-06-21
@@ -83,7 +85,7 @@ moonfield sun --date 2026-12-21
 Compare the noon altitudes. From Greenwich: about 62° versus about 15°.
 
 **2. The length of the day.** Longer days mean more hours of heating and fewer
-of cooling. At Greenwich, 16h39m in June against 7h50m in December.
+of cooling. At Greenwich, 16h38m in June against 7h50m in December.
 
 These compound. Long days *and* steep sunlight, or short days *and* shallow
 sunlight.

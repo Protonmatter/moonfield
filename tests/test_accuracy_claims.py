@@ -22,6 +22,7 @@ Where the reference values come from
 from __future__ import annotations
 
 import datetime as dt
+import math
 
 from moonfield import moon, observer, phase, sun
 from moonfield import time as mtime
@@ -113,6 +114,60 @@ class TestRiseAndSet:
         )
         assert rise_error <= 3
         assert set_error <= 3
+
+
+class TestSeasonsLessonNumbers:
+    """Figures quoted as prose in docs/06-seasons/the-distance-misconception.md.
+
+    They are not command output, so the docs-example harness cannot reach
+    them, but they are exactly the kind of number a reader is invited to
+    reproduce. The lesson's whole argument rests on the perihelion date being
+    in January, so if that ever came out wrong the page would be teaching the
+    misconception it exists to demolish.
+    """
+
+    GREENWICH_JUNE_ALTITUDE = 62      # degrees at local noon
+    GREENWICH_DEC_ALTITUDE = 15
+    GREENWICH_JUNE_DAY = 16 + 38 / 60  # hours
+    GREENWICH_DEC_DAY = 7 + 50 / 60
+    DISTANCE_VARIATION_PERCENT = 3.4
+
+    def _day(self, month: int, day: int):
+        return observer.sun_rise_set(GREENWICH, dt.datetime(2026, month, day, 12, tzinfo=UTC))
+
+    def test_noon_altitudes_at_the_solstices(self):
+        june = self._day(6, 21).transit_altitude
+        december = self._day(12, 21).transit_altitude
+        print(f"\n  Greenwich noon altitude: June {june:.1f} deg, December {december:.1f} deg")
+        assert round(june) == self.GREENWICH_JUNE_ALTITUDE
+        assert round(december) == self.GREENWICH_DEC_ALTITUDE
+
+    def test_day_lengths_at_the_solstices(self):
+        for month, day, claimed in [(6, 21, self.GREENWICH_JUNE_DAY), (12, 21, self.GREENWICH_DEC_DAY)]:
+            result = self._day(month, day)
+            hours = (result.setting - result.rise).total_seconds() / 3600
+            print(f"\n  day length {month}/{day}: {hours:.3f} h, lesson says {claimed:.3f} h")
+            assert abs(hours - claimed) < 1 / 60, "more than a minute out"
+
+    def test_earth_is_closest_to_the_sun_in_january(self):
+        samples = [
+            (dt.datetime(2026, 1, 1, tzinfo=UTC) + dt.timedelta(days=d),
+             sun.position(dt.datetime(2026, 1, 1, tzinfo=UTC) + dt.timedelta(days=d)).distance_au)
+            for d in range(365)
+        ]
+        nearest = min(samples, key=lambda s: s[1])
+        farthest = max(samples, key=lambda s: s[1])
+        variation = (farthest[1] - nearest[1]) / nearest[1] * 100
+        print(f"\n  perihelion {nearest[0]:%d %b}, aphelion {farthest[0]:%d %b}, {variation:.2f}%")
+        assert nearest[0].month == 1, "the lesson's argument depends on this"
+        assert farthest[0].month == 7
+        assert abs(variation - self.DISTANCE_VARIATION_PERCENT) < 0.1
+
+    def test_the_sunlight_intensity_ratio_the_lesson_quotes(self):
+        """The lesson says 3.35, having previously said 'about four times'."""
+        ratio = math.sin(math.radians(60)) / math.sin(math.radians(15))
+        print(f"\n  sin 60 / sin 15 = {ratio:.2f}")
+        assert abs(ratio - 3.35) < 0.01
 
 
 class TestTidesAreHonestlyBad:

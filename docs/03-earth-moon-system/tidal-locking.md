@@ -40,10 +40,21 @@ angular momentum.
 
 ## Libration
 
-We actually see about 59% of the Moon's surface, not 50%, because the rotation
-is *uniform* while the orbital speed is not (the orbit is an ellipse). The Moon
-appears to rock slightly east-west. Photograph the Moon monthly and you can see
-craters near the limb appear and disappear.
+We actually see about 59% of the Moon's surface, not 50%, and it takes two
+separate effects to get there.
+
+**East to west**, the rotation is *uniform* while the orbital speed is not,
+because the orbit is an ellipse. The Moon runs ahead of its own rotation near
+perigee and lags near apogee, so it appears to rock about 7.9° either way.
+
+**North to south**, the Moon's rotation axis is tilted about 6.7° to its
+orbital plane, so we look slightly over its north pole for half the month and
+slightly under its south pole for the other half.
+
+Longitude libration alone would not get you to 59%. It is the two rocking
+motions together, at right angles, that expose the extra sliver all the way
+round the limb. Photograph the Moon monthly and you can watch craters near the
+edge appear and disappear.
 
 ## Checkpoint
 
