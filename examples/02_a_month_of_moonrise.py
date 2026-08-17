@@ -1,7 +1,7 @@
 """How much later does the Moon rise each night?
 
 The usual answer is "about 50 minutes". Run this and see how much that
-figure actually varies — the spread is the interesting part, not the mean.
+figure actually varies; the spread is the interesting part, not the mean.
 
     python examples/02_a_month_of_moonrise.py
 """
@@ -18,7 +18,7 @@ start = dt.datetime.now(mtime.UTC).replace(hour=0, minute=0, second=0, microseco
 previous = None
 gaps = []
 
-print(f"{here.name} — moonrise, one lunar month\n")
+print(f"{here.name}, moonrise, one lunar month\n")
 print(f"{'date':<12} {'moonrise (UTC)':<16} {'later by':>10}")
 print("-" * 40)
 

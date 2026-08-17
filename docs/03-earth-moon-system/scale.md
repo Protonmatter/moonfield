@@ -7,7 +7,7 @@ you have ever seen has lied to you about it.
 
 ## Predict
 
-Take a ball about 10 cm across — that is Earth, roughly to scale.
+Take a ball about 10 cm across; that is Earth, roughly to scale.
 
 1. How big is the Moon at that scale? Pick an object.
 2. How far away do you put it? Guess in centimetres, before measuring.
@@ -48,7 +48,7 @@ Go and lay it out on the floor. It is worth the two minutes.
 
 ## The consequence you can check
 
-At that distance the Moon subtends about 0.52° — half a degree. So does the Sun,
+At that distance the Moon subtends about 0.52°, half a degree. So does the Sun,
 which is 400 times larger and 400 times further away. That coincidence is why
 total solar eclipses exist at all, and why they are so nearly-not-quite.
 
@@ -60,7 +60,7 @@ print(f"Sun:  {sun.angular_diameter(mtime.utc_now()):.4f} deg")
 
 Half a degree is about the width of your little fingernail at arm's length.
 Check it against the real Moon tonight. Almost everyone thinks the Moon is
-bigger than that — see the Moon Illusion in
+bigger than that, see the Moon Illusion in
 [Go and look](../02-moon-phases/go-and-look.md).
 
 ---

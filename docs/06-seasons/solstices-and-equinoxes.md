@@ -15,7 +15,7 @@ These are **instants**, not days:
 | September equinox | reaches 180° |
 | December solstice | reaches 270° |
 
-Not "the day with equal light and dark" — that is close, but not the
+Not "the day with equal light and dark"; that is close, but not the
 definition, and not even quite true (see below).
 
 ## Compute them
@@ -60,7 +60,7 @@ Check against a published almanac. You should be within a couple of minutes.
 ## Why the dates drift
 
 The tropical year is 365.2422 days, not 365. That quarter-day is why the events
-drift about six hours later each year and jump back on leap years — and why the
+drift about six hours later each year and jump back on leap years, and why the
 Gregorian calendar exists at all. The 400-year rule (skip the leap year in 1900
 and 2100 but not 2000) tracks 365.2422 to within about 27 seconds a year.
 
@@ -93,10 +93,10 @@ called the equilux, and it depends on your latitude.
 
 1. Compute all four for the year you were born
 2. Find the equilux date for your latitude
-3. Measure the interval between successive March equinoxes — that is the
+3. Measure the interval between successive March equinoxes; that is the
    tropical year, and you just measured it
-4. Compare the lengths of the four seasons. They are not equal — why not?
+4. Compare the lengths of the four seasons. They are not equal, why not?
 
 That last one is a good one. The answer involves Kepler's second law.
 
-Next: [Module 07 — Planets](../07-planets/) (planned).
+Next: [Module 07, Planets](../07-planets/) (planned).

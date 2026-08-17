@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: I have a question about the astronomy
     url: https://github.com/Protonmatter/moonfield/discussions/categories/q-a
-    about: Questions belong in Discussions. No question is too basic — this is a learning project.
+    about: Questions belong in Discussions. No question is too basic; this is a learning project.
   - name: I want to show what I observed
     url: https://github.com/Protonmatter/moonfield/discussions/categories/show-and-tell
     about: Share your observations, plots and logs. We would like to see them.

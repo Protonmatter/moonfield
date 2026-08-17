@@ -61,7 +61,7 @@ cycles  = 9719.115 / 29.530589      = 329.12 cycles
 age     = 0.12 × 29.530589          ≈ 3.55 days
 ```
 
-About three and a half days past new — a young waxing crescent.
+About three and a half days past new, a young waxing crescent.
 
 ### Turning age into illumination
 
@@ -87,10 +87,10 @@ comments.
 
 ### What it assumes
 
-1. The Moon moves at a constant rate — **false**
-2. Every cycle is exactly 29.530589 days — **false**, they range 29.27 to 29.83
-3. Earth's orbit does not affect it — **false**
-4. The illumination curve is a clean cosine — **approximately true**
+1. The Moon moves at a constant rate. **False.**
+2. Every cycle is exactly 29.530589 days. **False**, they range 29.27 to 29.83
+3. Earth's orbit does not affect it. **False.**
+4. The illumination curve is a clean cosine. **Approximately true.**
 
 ---
 
@@ -107,10 +107,10 @@ That angle is the **elongation**:
 elongation = moon_longitude - sun_longitude   (mod 360)
 ```
 
-- 0° — same direction as the Sun — new Moon
-- 90° — first quarter
-- 180° — opposite the Sun — full Moon
-- 270° — last quarter
+- 0° (same direction as the Sun): new Moon
+- 90°: first quarter
+- 180° (opposite the Sun): full Moon
+- 270°: last quarter
 
 ### Finding the Sun
 
@@ -160,7 +160,7 @@ See `src/moonfield/moon.py`.
 ### From elongation to illumination
 
 Not quite the same as the elongation, because the Sun is not infinitely far
-away. What matters is the **phase angle** — the Sun-Moon-Earth angle:
+away. What matters is the **phase angle**, the Sun-Moon-Earth angle:
 
 ```
 tan(phase_angle) = R sin(ψ) / (Δ - R cos(ψ))
@@ -175,22 +175,35 @@ elongation.
 ## Run both
 
 ```bash
-moonfield phase --date 2026-08-16 --explain
+moonfield phase --date "2026-08-16T00:00:00Z" --explain --no-art
 ```
+
+Note the `Z`. It means "this instant in UTC", so you get the numbers printed
+below wherever in the world you are running this. Without it, `--date
+2026-08-16` means midnight on *your* clock, which is a different moment in
+Sydney than in Chicago, and your output would not match the page.
+
+<!-- moonfield-check: phase --date 2026-08-16T00:00:00Z --explain --no-art -->
 
 ```
   Elongation = Moon longitude - Sun longitude
-             = 191.5083 - 143.9155
-             = 47.5928 deg
+             = 185.3674 - 143.1692
+             = 42.1981 deg  (wrapped into 0-360)
+```
 
-  Phase angle (Sun-Moon-Earth): 132.2178 deg
-  Illumination = (1 + cos(132.2178)) / 2
-               = 0.164318  ->  16.4%
+<!-- moonfield-check: phase --date 2026-08-16T00:00:00Z --explain --no-art -->
 
-The simple model, for comparison
---------------------------------
-    simple age  = 3.5530 days
-    true age    = 4.1418 days
+```
+  Illumination = (1 + cos(phase angle)) / 2
+               = (1 + cos(137.6132)) / 2
+               = 0.130695  ->  13.1%
+```
+
+<!-- moonfield-check: phase --date 2026-08-16T00:00:00Z --explain --no-art -->
+
+```
+    simple age  = 2.6765 days
+    true age    = 3.2653 days
     difference  = -14.13 hours
 ```
 
@@ -201,12 +214,12 @@ Fourteen hours apart. Neither is buggy.
 ## Explain the difference
 
 The simple model assumes constant speed. The Moon's orbit is an ellipse, so it
-moves fastest at perigee and slowest at apogee — a variation of about 12%.
+moves fastest at perigee and slowest at apogee, a variation of about 12%.
 
 Over one cycle, that means the real Moon can be up to roughly half a day ahead
 of or behind the clock model. The error is **cyclic, not cumulative**: it swings
 back and forth rather than growing without limit. Check your predictions from
-the start of this lesson — most people expect the error to grow.
+the start of this lesson, most people expect the error to grow.
 
 ```python
 import datetime as dt
@@ -247,7 +260,7 @@ actually achieves about two.
 Open `src/moonfield/phase.py` and change `REFERENCE_NEW_MOON` by one day. Run
 `moonfield phase --explain`.
 
-The simple model shifts by a day. The geometric model does not move at all — it
+The simple model shifts by a day. The geometric model does not move at all; it
 does not use that constant. That is the practical difference between a model
 anchored to a measurement and one derived from geometry.
 
@@ -269,8 +282,8 @@ Change it back.
 
 1. Do the simple calculation by hand for today. Compare with `simple_phase`.
 2. Find the date this year where the two models disagree most.
-3. Truncate the lunar series further — comment out all but the first five terms
-   in `moon.py` — and see how much accuracy you lose.
+3. Truncate the lunar series further (comment out all but the first five terms
+   in `moon.py`) and see how much accuracy you lose.
 4. Work out how many terms you need for 0.1° accuracy.
 5. Compute the illumination for a date, then again with the Sun's distance
    pretended infinite. How much does the phase-angle correction actually matter?
@@ -286,7 +299,7 @@ Change it back.
 ## Common questions
 
 **Why is the Moon so much harder than the Sun?**
-The Sun's apparent motion is really Earth's orbit — a two-body problem with an
+The Sun's apparent motion is really Earth's orbit, a two-body problem with an
 exact solution. The Moon is a genuine three-body problem, and those have no
 closed form.
 
@@ -299,6 +312,6 @@ date outside the table, and it teaches you nothing about why.
 - [Synodic and sidereal](synodic-and-sidereal.md)
 - [How accurate is Moonfield?](../background/accuracy.md)
 - Meeus, *Astronomical Algorithms*, chapters 25 and 47
-- Read `src/moonfield/phase.py` — both models, side by side
+- Read `src/moonfield/phase.py`, both models, side by side
 
 Next: [Synodic and sidereal](synodic-and-sidereal.md).

@@ -33,15 +33,15 @@ Write your answers down.
 ### A bare time is not an instant
 
 "21:00" is incomplete information. It is like saying "it is 15 degrees" without
-saying Celsius or Fahrenheit — a number with the units left off.
+saying Celsius or Fahrenheit, a number with the units left off.
 
 To specify a real moment you need a time *and* a reference frame:
 
-- `21:00 BST` — a specific instant
-- `21:00 UTC` — a different specific instant
-- `21:00` — not an instant at all
+- `21:00 BST`: a specific instant
+- `21:00 UTC`: a different specific instant
+- `21:00`: not an instant at all
 
-The Moon moves about half a degree — its own width — every hour. An ambiguous
+The Moon moves about half a degree (its own width) every hour. An ambiguous
 time is an ambiguous sky.
 
 ### UTC: the shared reference
@@ -68,7 +68,7 @@ broken for well over a billion people.
 ### Why time zones exist at all
 
 Before railways, every town kept its own solar time and nobody minded. Trains
-made that impossible — a timetable needs one clock. Standard time zones were the
+made that impossible; a timetable needs one clock. Standard time zones were the
 fix. [Why UTC exists](../background/why-utc-exists.md) tells the whole story;
 it is genuinely a good one.
 
@@ -80,7 +80,7 @@ horrible situations twice a year:
 - **Spring forward:** clocks jump 02:00 → 03:00. The times between never
   happened. `02:30` on that date does not exist.
 - **Autumn back:** clocks jump 03:00 → 02:00. The times between happen
-  **twice**. `02:30` on that date is ambiguous — there are two of them, an
+  **twice**. `02:30` on that date is ambiguous; there are two of them, an
   hour apart.
 
 This is why software that stores local timestamps has a bad October. UTC never
@@ -88,7 +88,7 @@ does either of these things.
 
 Southern hemisphere countries shift in the opposite months. Many countries do
 not shift at all. Some have changed policy recently. Do not hard-code any of
-it — that is what the timezone database is for.
+it; that is what the timezone database is for.
 
 ### The timezone database
 
@@ -105,11 +105,11 @@ Asia/Kathmandu
 Pacific/Auckland
 ```
 
-The format is `Region/City` — a city rather than a country, because countries
+The format is `Region/City`, a city rather than a country, because countries
 sometimes span several zones or change their minds. Python reads this database
 through `zoneinfo`, which Moonfield uses.
 
-Avoid abbreviations like `EST` or `CST`. They are ambiguous — `CST` is used for
+Avoid abbreviations like `EST` or `CST`. They are ambiguous, `CST` is used for
 US Central, China Standard, and Cuba Standard time, which are hours apart.
 
 ---
@@ -149,7 +149,7 @@ moonfield phase --date "2026-08-16T21:00" --timezone Europe/London
 moonfield phase --date "2026-08-16T21:00" --timezone Asia/Tokyo
 ```
 
-These are **different instants** — nine hours apart — so the Moon has moved.
+These are **different instants** (nine hours apart), so the Moon has moved.
 Check the illumination percentages: they differ slightly.
 
 This is the whole lesson in two commands. "9pm" is not one moment.
@@ -159,7 +159,7 @@ This is the whole lesson in two commands. "9pm" is not one moment.
 ## Validate
 
 Pick any online world clock and compare it against `moonfield doctor`. If your
-local time or offset is wrong, fix it before continuing — everything downstream
+local time or offset is wrong, fix it before continuing; everything downstream
 inherits the error.
 
 ---
@@ -215,7 +215,7 @@ A compromise between English "Coordinated Universal Time" and French "Temps
 Universel Coordonné". Neither language got its acronym.
 
 **What is Zulu time?**
-UTC. Military and aviation phonetic alphabet — zone Z is offset zero. The `Z`
+UTC. Military and aviation phonetic alphabet, zone Z is offset zero. The `Z`
 on the end of `2026-08-16T21:00:00Z` means exactly this.
 
 ## Getting stuck?
@@ -226,7 +226,7 @@ on the end of `2026-08-16T21:00:00Z` means exactly this.
 ## Go deeper
 
 - [Why UTC exists](../background/why-utc-exists.md)
-- [Julian Day](julian-day.md) — what astronomers compute with instead
+- [Julian Day](julian-day.md): what astronomers compute with instead
 - Read `src/moonfield/time.py`
 
 Next: [Julian Day](julian-day.md).

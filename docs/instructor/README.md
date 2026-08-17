@@ -8,14 +8,14 @@ This page is for anyone running it for other people.
 Everything here is public and always will be: lessons, source, tests, answers to
 the *conceptual* questions.
 
-Material that would spoil the labs if learners could read it — worked solutions
-to the prediction exercises, assessment rubrics, marking schemes, exam questions
-— belongs in a **separate private repository**.
+Material that would spoil the labs if learners could read it (worked solutions
+to the prediction exercises, assessment rubrics, marking schemes, exam
+questions) belongs in a **separate private repository**.
 
 To be explicit about something that is easy to get wrong: putting a folder
 called `instructor/` in a public repository provides no privacy whatsoever.
 Neither does `.gitignore`, and neither do branch protection rules or CODEOWNERS.
-Those govern *workflow* — who may merge what — not *visibility*. A private repo
+Those govern *workflow* (who may merge what) not *visibility*. A private repo
 is the only mechanism here that actually restricts who can read something.
 
 Suggested split:
@@ -35,7 +35,7 @@ both unless you have a lawful basis and a retention policy.
 
 | Module | Contact time | Homework | Notes |
 |---|---|---|---|
-| 00 Start here | 45 min | — | Do setup together; it is where people drop out |
+| 00 Start here | 45 min | - | Do setup together; it is where people drop out |
 | 01 Time and place | 2 h | 1 h | The Longitude Game is the hook |
 | 02 Moon phases | 3 h | **1 month** | Start the observation log in week one |
 | 03 Earth–Moon | 1.5 h | 30 min | Do the scale exercise physically |
@@ -54,7 +54,7 @@ that slip, Moonfield degrades into a tour of some software.
 
 Practical enforcement that does not feel like policing:
 
-- Collect predictions before revealing results — a shared document, a folded
+- Collect predictions before revealing results, a shared document, a folded
   piece of paper, anything committed
 - Score participation on *making* a prediction, never on its accuracy
 - Publicly discuss the most interesting wrong predictions, with the predictor's
@@ -84,7 +84,7 @@ looking stupid.
 
 | Symptom | Actual cause |
 |---|---|
-| "Everything is 12 hours out" | Longitude sign — Moonfield is east-positive |
+| "Everything is 12 hours out" | Longitude sign, Moonfield is east-positive |
 | "Sunrise is wrong by an hour" | Timezone, or daylight saving |
 | "The two phase models disagree" | They should; that is lesson 02.3 |
 | "The tide prediction is useless" | Correct; that is the entire point of module 04 |

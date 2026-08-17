@@ -1,4 +1,4 @@
-# 04 — Tides
+# 04: Tides
 
 Applied Earth-Moon physics, and the module where you meet a model that fails.
 
@@ -27,7 +27,7 @@ Not a problem. Lesson 4 supplies datasets from real tide stations around the
 world, in `docs/04-tides/data/`. You can run the whole lab against Brest,
 Hilo, Fremantle or the Bay of Fundy without leaving your desk.
 
-If you *do* live near tidal water, use your own station — it is much better.
+If you *do* live near tidal water, use your own station; it is much better.
 
 ## Why this module matters more than it looks
 
@@ -35,8 +35,8 @@ Most of this curriculum builds models that work. This one builds a model that
 is physically correct and practically useless, and then works out why.
 
 That is not a detour. Knowing that a model can be *right about the physics* and
-*wrong about your harbour* — and being able to say precisely which part is
-missing — is one of the most transferable things here. It is the difference
+*wrong about your harbour* (and being able to say precisely which part is
+missing) is one of the most transferable things here. It is the difference
 between using a model and understanding one.
 
 By the end you will have calibrated a physical model against real measurements,

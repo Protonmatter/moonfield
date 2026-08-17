@@ -1,6 +1,6 @@
 # Tidal locking
 
-**Goal:** explain why we always see the same face of the Moon — and why that is
+**Goal:** explain why we always see the same face of the Moon, and why that is
 *not* because the Moon does not rotate.
 
 ---
@@ -16,7 +16,7 @@ Does the Moon rotate on its axis? Commit to yes or no before reading on.
 Put a coin on the table. Walk around it, keeping your face towards it the whole
 time.
 
-By the time you get back, have you turned around? Yes — once. Someone watching
+By the time you get back, have you turned around? Yes, once. Someone watching
 from the ceiling saw you face north, then east, then south, then west.
 
 **The Moon rotates exactly once per orbit.** That is why we see one face. If it
@@ -54,7 +54,7 @@ craters near the limb appear and disappear.
 
 ## Questions to think about
 
-- How long is a solar day on the Moon — 27.3 or 29.5 days? (Same question as
+- How long is a solar day on the Moon, 27.3 or 29.5 days? (Same question as
   the end of [synodic and sidereal](../02-moon-phases/synodic-and-sidereal.md).)
 - If Earth eventually locks to the Moon, what happens to tides?
 

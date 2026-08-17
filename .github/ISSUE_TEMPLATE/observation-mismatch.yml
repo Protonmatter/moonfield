@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        These are among the most valuable reports we get — either the code is
+        These are among the most valuable reports we get: either the code is
         wrong, or a lesson failed to explain something it should have.
 
         Either way we want to know. Please run `moonfield doctor` first, since

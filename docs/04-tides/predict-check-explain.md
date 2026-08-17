@@ -22,9 +22,9 @@ Do not look anything up yet. That is the whole point of the exercise.
 Write these down:
 
 1. **The time and date** you are asking about
-2. **Your location** — or a tide station you have chosen from `data/`
-3. **The Moon's phase** — `moonfield phase`
-4. **When the Moon crosses your meridian** — `moonfield moon`, the transit time
+2. **Your location**: or a tide station you have chosen from `data/`
+3. **The Moon's phase**: `moonfield phase`
+4. **When the Moon crosses your meridian**: `moonfield moon`, the transit time
 
 ```bash
 moonfield phase --no-art
@@ -71,7 +71,7 @@ The sky right now
 -----------------
   - Moon crosses your meridian at 16:04 BST
   - between springs and neaps
-  - Relative range factor: 1.09 (1.00 would be an average tide)
+  - Relative range factor: 1.09 (1.00 is the Moon alone; 1.46 at springs, 0.54 at neaps)
   - Lunitidal interval in use: 0.00 hours
 
 Predicted events
@@ -109,13 +109,13 @@ hours. That is a real observation, and it beats any table.
 **If you do not live near tidal water**, use a supplied dataset:
 
 ```
-docs/04-tides/data/brest-2026-08.csv        Brest, France — textbook semidiurnal
-docs/04-tides/data/hilo-2026-08.csv         Hilo, Hawaii — mixed tides
-docs/04-tides/data/fremantle-2026-08.csv    Fremantle, Australia — diurnal, tiny range
-docs/04-tides/data/burntcoat-2026-08.csv    Bay of Fundy — 16 m range
+docs/04-tides/data/brest-2026-08.csv        Brest, France: textbook semidiurnal
+docs/04-tides/data/hilo-2026-08.csv         Hilo, Hawaii: mixed tides
+docs/04-tides/data/fremantle-2026-08.csv    Fremantle, Australia: diurnal, tiny range
+docs/04-tides/data/burntcoat-2026-08.csv    Bay of Fundy: 16 m range
 ```
 
-Each has published high and low water times. Read the header — it says where the
+Each has published high and low water times. Read the header; it says where the
 numbers came from.
 
 ---
@@ -124,26 +124,40 @@ numbers came from.
 
 Do not eyeball it. Get a number.
 
+Use your own observed high waters if you have them. If you do not yet, this
+repository ships real published tide tables you can borrow: the three times
+below are actual high waters at Brest, taken from
+[`data/brest-2026-08.csv`](data/brest-2026-08.csv).
+
 ```bash
-moonfield tide compare \
-    --observed 2026-08-16T18:04 \
-    --observed 2026-08-17T06:26
+moonfield tide compare --lat 48.383 --lon -4.495 --timezone UTC \
+    --date "2026-08-16T12:00:00Z" \
+    --observed 2026-08-16T04:06 \
+    --observed 2026-08-16T16:32 \
+    --observed 2026-08-17T04:56
 ```
+
+<!-- moonfield-check: tide compare --lat 48.383 --lon -4.495 --timezone UTC --date 2026-08-16T12:00:00Z --observed 2026-08-16T04:06 --observed 2026-08-16T16:32 --observed 2026-08-17T04:56 -->
 
 ```
 Comparison
 ----------
-  Observed               Model predicted        Model error
-  2026-08-16 18:04       2026-08-16 16:04           2.00 h late
-  2026-08-17 06:26       2026-08-17 04:26           2.00 h late
+  Observed               Model predicted         Model error
+  2026-08-16 04:06       2026-08-16 03:00          1.09 h early
+  2026-08-16 16:32       2026-08-16 15:22          1.15 h early
+  2026-08-17 04:56       2026-08-17 03:45          1.18 h early
 
 What the difference is telling you
 ----------------------------------
-Average model error: -2.00 hours
-Spread across your samples: 0.00 hours
-
-The error is CONSISTENT. That is the good case...
+Average model error: -1.14 hours
+Spread across your samples: 0.09 hours
 ```
+
+Read those two summary numbers carefully, because they are the whole point of
+the step. The model is off by more than an hour every time, and it is off by
+*almost exactly the same amount* every time. An error that large would be
+alarming if it were random. An error that consistent is barely an error at
+all: it is a missing constant, sitting there waiting to be measured.
 
 ---
 
@@ -153,18 +167,18 @@ Now the real work. Answer these in writing:
 
 ### Was the error consistent or scattered?
 
-**Consistent** — every prediction off by roughly the same amount, in the same
+**Consistent**: every prediction off by roughly the same amount, in the same
 direction. That is not noise. A steady offset is a *missing constant*, and a
 missing constant is fixable.
 
-**Scattered** — the error varies between tides. A single constant will not fix
+**Scattered**: the error varies between tides. A single constant will not fix
 that; something more structural is wrong.
 
 ### If consistent: you have measured the lunitidal interval
 
 The **lunitidal interval** is the characteristic lag at your port between the
 Moon crossing your meridian and high water actually arriving. It exists because
-the tidal bulge is not a rigid thing that rides under the Moon — it is a wave,
+the tidal bulge is not a rigid thing that rides under the Moon; it is a wave,
 and waves take time to travel across a shelf and up an estuary.
 
 It is a property of *the place*, not of the sky. It cannot be computed from
@@ -173,10 +187,11 @@ astronomy. It has to be measured.
 Feed yours back in:
 
 ```bash
-moonfield tide rough --interval 2.0
+moonfield tide rough --lat 48.383 --lon -4.495 --interval 1.14
 ```
 
-Then compare again. The error should mostly vanish.
+Then compare again. The error should mostly vanish, because you have just
+handed the model the one number it could never have worked out for itself.
 
 **You have just calibrated a physical model with local measurements.** That is
 the lesson.
@@ -281,7 +296,7 @@ storm.
 ## Go deeper
 
 - [Why local tides are hard](why-local-tides-are-hard.md)
-- `moonfield tide explain` — the full ten-step walkthrough
-- Read `src/moonfield/tides.py` — the model and its stated limits
+- `moonfield tide explain`: the full ten-step walkthrough
+- Read `src/moonfield/tides.py`, the model and its stated limits
 
 Next: [Why local tides are hard](why-local-tides-are-hard.md).

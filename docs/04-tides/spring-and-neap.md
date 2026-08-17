@@ -9,15 +9,15 @@
 The Sun raises its own tide, about 46% the size of the Moon's. What matters is
 whether the two line up.
 
-- **New and full Moon** — Sun and Moon in line, bulges add → **spring tides**,
+- **New and full Moon**: Sun and Moon in line, bulges add → **spring tides**,
   largest range
-- **First and last quarter** — at right angles, partly cancel → **neap tides**,
+- **First and last quarter**: at right angles, partly cancel → **neap tides**,
   smallest range
 
 "Spring" has nothing to do with the season. It means *to spring up*.
 
 Because springs happen at *both* new and full Moon, the cycle repeats twice per
-month — roughly every 14.8 days, with about 7 days between a spring and the
+month, roughly every 14.8 days, with about 7 days between a spring and the
 next neap.
 
 The combined range:
@@ -42,7 +42,7 @@ The `range factor` line: about 1.46 at springs, 0.54 at neaps.
 
 1. Find the next spring tide from the phase alone, then verify with a tide table
 2. Check whether the real spring/neap ratio at your port matches ~1.46/0.54
-3. Springs often lag the full Moon by a day or two — find out why (friction)
+3. Springs often lag the full Moon by a day or two, find out why (friction)
 
 ## Checkpoint
 

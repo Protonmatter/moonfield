@@ -59,7 +59,7 @@ moonfield longitude --reference               # the background
 ```
 
 `--lat` and `--lon` must be given **together**. Passing only one is an error
-rather than a partial override — answering confidently about the wrong place
+rather than a partial override, answering confidently about the wrong place
 would be worse than refusing.
 
 ## Python

@@ -1,4 +1,4 @@
-# 06 — Seasons
+# 06: Seasons
 
 The module that starts by proving a very popular idea wrong.
 
@@ -12,4 +12,4 @@ The module that starts by proving a very popular idea wrong.
 
 ## Prerequisites
 
-[Module 05](../05-local-sky/) — you need solar altitude.
+[Module 05](../05-local-sky/), you need solar altitude.

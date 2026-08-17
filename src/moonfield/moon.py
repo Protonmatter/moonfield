@@ -11,12 +11,19 @@ Meeus, *Astronomical Algorithms*, chapter 47.
 
 Accuracy and what we truncated
 ------------------------------
-The full table has 60 terms for longitude and distance and 60 for latitude.
-We keep the largest ~30 of each. Every term we dropped is smaller than about
-0.002 degrees, so the total error is a few tens of arcseconds -- around a
-thousandth of the Moon's own width. You cannot see that by eye. You *can* see
-it if you compare against a professional ephemeris, which is exactly the kind
-of discrepancy this project wants you to notice and explain.
+The full table has 60 terms for longitude and distance and 60 for latitude. We
+keep the largest 35 and 30 of them respectively.
+
+Against Meeus's own worked example 47.a, what that costs is about 2 arcseconds
+of position and 12 km of distance, and ``tests/test_accuracy_claims.py``
+measures exactly that rather than taking this comment's word for it.
+
+Do not read 2 arcseconds as a guarantee. Each dropped term is under about
+0.002 degrees on its own, but there are 25 of them, and on a day when several
+happen to peak together the error can reach a few tens of arcseconds. That is
+still around a thousandth of the Moon's own width, so you will never see it by
+eye. You *can* see it against a professional ephemeris, which is exactly the
+kind of discrepancy this project wants you to notice and explain.
 """
 
 from __future__ import annotations

@@ -23,12 +23,12 @@ clone → enter repo → create venv → activate → install → doctor → fir
 
 In plain words:
 
-1. **Clone** — copy this project from GitHub onto your computer
-2. **Enter** — move your terminal into that copy
-3. **Create a venv** — make a private Python workspace just for this project
-4. **Activate** — tell your terminal to use that workspace
-5. **Install** — put Moonfield into it
-6. **Doctor** — check it all worked
+1. **Clone**: copy this project from GitHub onto your computer
+2. **Enter**: move your terminal into that copy
+3. **Create a venv**: make a private Python workspace just for this project
+4. **Activate**: tell your terminal to use that workspace
+5. **Install**: put Moonfield into it
+6. **Doctor**: check it all worked
 
 ---
 
@@ -43,9 +43,9 @@ typing the commands in this guide.
 | **Windows** | Start menu → type `PowerShell` → open **Windows PowerShell** |
 | **macOS** | `Cmd + Space` → type `Terminal` → Enter |
 | **Linux** | `Ctrl + Alt + T`, or search for "Terminal" |
-| **Windows + WSL** | Start menu → `Ubuntu` (after installing WSL — see below) |
+| **Windows + WSL** | Start menu → `Ubuntu` (after installing WSL, see below) |
 
-You will see a **prompt** — some text ending in `>` or `$` or `%`. That means
+You will see a **prompt**, some text ending in `>` or `$` or `%`. That means
 it is waiting for you. When this guide shows a command, type it and press Enter.
 
 > **A note on WSL.** Windows Subsystem for Linux gives you a real Linux
@@ -170,7 +170,7 @@ Nothing visible happens. That is correct.
 ### What did that do, and why?
 
 A **virtual environment** is a private Python workspace for one project. It is a
-folder — here, `.venv` — containing its own copy of Python and its own place to
+folder (here, `.venv`) containing its own copy of Python and its own place to
 put packages.
 
 Without one, every package you install goes into one shared pile for your whole
@@ -221,7 +221,7 @@ still requires downloaded scripts to be signed. Then try activating again.
 <details>
 <summary><strong>Do I have to do this every time?</strong></summary>
 
-Yes — once per new terminal window. It is not permanent, and that is on
+Yes, once per new terminal window. It is not permanent, and that is on
 purpose: it means "use this project's Python", and it should stop applying when
 you go and work on something else.
 
@@ -239,8 +239,8 @@ pip install -e .
 ```
 
 The `-e` means "editable": it links to the source rather than copying it, so if
-you change the code — and you will, that is the point — your changes take effect
-immediately without reinstalling.
+you change the code (and you will, because that is the point), your changes
+take effect immediately without reinstalling.
 
 The `.` means "the project in this folder".
 
@@ -276,7 +276,7 @@ or a list of `PROBLEM:` lines, each with a fix.
 
 > **What `doctor` does not tell you.** It confirms your computer *knows* what
 > timezone it is in and can do the arithmetic. It cannot confirm your clock is
-> actually set correctly — nothing on your own machine can check its own clock.
+> actually set correctly; nothing on your own machine can check its own clock.
 > If your predictions are consistently a few minutes off, that is worth
 > investigating. See [Time and place](../01-time-and-place/).
 
@@ -295,8 +295,8 @@ Replace those numbers with your own.
 - **Longitude:** **east positive**, west negative. New York is `-74.006`.
 
 > **The most common mistake in this whole project** is a longitude sign. If your
-> results are wildly wrong later — the Sun rising at midnight, the Moon on the
-> wrong side of the sky — check this first. Places west of Greenwich (the
+> results are wildly wrong later (the Sun rising at midnight, the Moon on the
+> wrong side of the sky), check this first. Places west of Greenwich (the
 > Americas, western Europe, west Africa) have **negative** longitude.
 
 To find your coordinates: open any map website, right-click where you are, and
@@ -354,12 +354,12 @@ To leave the virtual environment: `deactivate`.
 
 ## Getting stuck?
 
-- [Getting Unstuck](../troubleshooting/getting-unstuck.md) — by symptom
-- [Resetting your environment](../troubleshooting/environment-reset.md) — start clean
+- [Getting Unstuck](../troubleshooting/getting-unstuck.md): by symptom
+- [Resetting your environment](../troubleshooting/environment-reset.md): start clean
 - [Windows-specific problems](../troubleshooting/windows.md)
 - [macOS-specific problems](../troubleshooting/macos.md)
 - [Linux and WSL problems](../troubleshooting/linux.md)
-- [Discussions](https://github.com/Protonmatter/moonfield/discussions) — ask a human
+- [Discussions](https://github.com/Protonmatter/moonfield/discussions): ask a human
 
 ## Go deeper
 

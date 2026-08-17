@@ -9,7 +9,7 @@ Why the asymmetry?
 ## Play it
 
 **In the browser:** open [`site/longitude-game/index.html`](../../site/longitude-game/index.html)
-— no install, no network.
+, no install, no network.
 
 **In the terminal:**
 
@@ -30,7 +30,7 @@ where you are, the difference gives you your longitude.
 longitude = (reference_time_at_local_noon − 12:00) × 15°
 ```
 
-Local noon is easy — the Sun is highest, a vertical stick's shadow is shortest.
+Local noon is easy; the Sun is highest, a vertical stick's shadow is shortest.
 Reference time is the hard part, because it means carrying an accurate clock
 across an ocean on a rolling, damp, temperature-swinging ship.
 
@@ -42,7 +42,7 @@ because it needs a *memory of somewhere else*.
 The game's second mode is the one worth playing.
 
 You are given a clock that drifts by a few seconds a day. You sail for weeks.
-Then you make landfall — and find out where you actually are versus where you
+Then you make landfall, and find out where you actually are versus where you
 thought.
 
 Four seconds of drift per day, over a two-month crossing, is about four minutes
@@ -72,4 +72,4 @@ Three things that recur throughout Moonfield:
 ## See also
 
 - [Why UTC exists](../background/why-utc-exists.md)
-- [Module 01 — Time and place](../01-time-and-place/longitude-game.md)
+- [Module 01, Time and place](../01-time-and-place/longitude-game.md)

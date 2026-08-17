@@ -380,8 +380,8 @@ def _explain_phase(info, when) -> None:
         print("  cycles range from about 29.27 to 29.83 days.")
 
     print(heading("What this model still ignores"))
-    print(f"{BULLET}We truncated the lunar series, leaving errors of a few")
-    print("       tens of arcseconds in the Moon's position.")
+    print(f"{BULLET}We truncated the lunar series. That costs about 2 arcseconds")
+    print("       at Meeus's benchmark, and a few tens on a bad day.")
     print(f"{BULLET}The illumination is for a smooth sphere. The real Moon has")
     print("       mountains, so the terminator is ragged.")
     print(f"{BULLET}Near new Moon the lit fraction is tiny but not zero, and")
@@ -812,7 +812,7 @@ def _tide_rough(estimate, location: Location, args) -> int:
               f"{_fmt(estimate.moon_transit, zone)}")
     print(f"{BULLET}{estimate.spring_neap_label}")
     print(f"{BULLET}Relative range factor: {estimate.range_factor:.2f} "
-          f"(1.00 would be an average tide)")
+          f"(1.00 is the Moon alone; 1.46 at springs, 0.54 at neaps)")
     print(f"{BULLET}Lunitidal interval in use: {estimate.lunitidal_interval:.2f} hours")
 
     print(heading("What the two-bulge model says"))

@@ -1,4 +1,4 @@
-# 03 — The Earth-Moon system
+# 03: The Earth-Moon system
 
 Between "what phase is it?" and "why does the sea move?" sits the physical
 system itself: two bodies, locked together, orbiting a point that is inside

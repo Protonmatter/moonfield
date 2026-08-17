@@ -22,14 +22,14 @@ The tide row is not a defect. See below.
 ## Where the numbers come from
 
 **The Sun** uses the low-precision method from Meeus, *Astronomical
-Algorithms*, chapter 25 — a mean longitude plus a three-term equation of the
+Algorithms*, chapter 25, a mean longitude plus a three-term equation of the
 centre. Meeus states 0.01° and our check against his worked example (JD
 2448908.5) reproduces his apparent longitude to 199.90894° against his
 199.90895°.
 
 **The Moon** uses a truncated ELP-2000/82, Meeus chapter 47: 35 longitude and
 distance terms, 30 latitude terms, from a series with hundreds. Against Meeus's
-worked example (JD 2448724.5) we get 133.166783° against his 133.167265° — about
+worked example (JD 2448724.5), we get 133.166783° against his 133.167265°, about
 1.7 arcseconds, entirely from the truncation.
 
 Full ELP-2000/82 would reach milliarcseconds. It would also be thousands of
@@ -37,7 +37,7 @@ terms and unreadable, which defeats the purpose.
 
 **Rise and set** are found by sampling every 10 minutes and then bisecting,
 rather than by a closed-form formula. Closed forms assume the body does not
-move during the day — acceptable for the Sun, poor for the Moon, which shifts
+move during the day: acceptable for the Sun, poor for the Moon, which shifts
 about 13° between one sunset and the next.
 
 Sunrise is defined at a geometric altitude of −0.833°: −0.567° for atmospheric
@@ -49,7 +49,7 @@ because "sunrise" means the upper limb.
 **Refraction is genuinely uncertain.** The standard formula assumes 10 °C and
 1010 mb. Real refraction at the horizon varies with temperature, pressure and
 lapse rate, and on a cold clear morning over water it can differ by several
-arcminutes. This is a real physical limit, not a coding one — no algorithm
+arcminutes. This is a real physical limit, not a coding one, no algorithm
 fixes it, because the atmosphere is not in the algorithm.
 
 For sunrise timing, refraction uncertainty dominates everything else we do.
@@ -107,7 +107,7 @@ contribution.
 ## The general point
 
 Every model here has a domain where it is useful and a boundary past which it
-is not. Knowing where that boundary is — and saying so out loud — is the
+is not. Knowing where that boundary is (and saying so out loud) is the
 difference between a tool and a black box.
 
 That is why this page exists, and why the tide module is in the curriculum at

@@ -17,10 +17,10 @@ wrong. Try it before reading on, then check with a compass or a map.
 
 ### Two numbers locate you
 
-**Latitude** — how far north or south of the equator, from −90 (South Pole)
+**Latitude**: how far north or south of the equator, from −90 (South Pole)
 through 0 (equator) to +90 (North Pole).
 
-**Longitude** — how far east or west of the prime meridian at Greenwich, from
+**Longitude**: how far east or west of the prime meridian at Greenwich, from
 −180 through 0 to +180.
 
 Latitude has an obvious natural zero: the equator, where Earth's rotation
@@ -67,7 +67,7 @@ The same place, four ways:
 ```
 
 One degree of latitude is about 111 km everywhere. One arcminute is about
-1.85 km — that is one nautical mile, which is where the unit comes from. One
+1.85 km; that is one nautical mile, which is where the unit comes from. One
 arcsecond is about 31 metres.
 
 Moonfield accepts all four formats:
@@ -86,7 +86,7 @@ distance ≈ 111.32 km × cos(latitude)
 ```
 
 At the equator, 111 km. At 51°N (London), about 70 km. At 78°N
-(Longyearbyen), about 23 km. At the pole, zero — all meridians meet.
+(Longyearbyen), about 23 km. At the pole, zero: all meridians meet.
 
 This is why the Longitude Game asks for your latitude before converting a
 longitude error into kilometres.
@@ -97,12 +97,12 @@ Two things Moonfield's core path simplifies:
 
 **Elevation** raises your horizon. From a mountain you see slightly *past* the
 geometric horizon, so the Sun rises a little earlier and sets a little later.
-The effect is small — a few minutes at a few hundred metres.
+The effect is small, a few minutes at a few hundred metres.
 
 **Your actual horizon** is almost certainly not flat. Hills, buildings and
 trees block the lower sky. Moonfield computes rise and set against a
 mathematically flat sea-level horizon. If a building sits to your east, the Sun
-will appear later than predicted, and your prediction is not wrong — your
+will appear later than predicted, and your prediction is not wrong; your
 horizon is just not the one the model assumed.
 
 Module 05 covers horizon profiles properly.
@@ -169,7 +169,7 @@ symmetric but wrong in day length, your latitude is wrong.
 
 1. Enter your location in decimal degrees, then in DMS. Confirm they match.
 2. Find three cities on nearly the same latitude as you, on different
-   continents. Compare their day lengths — should be nearly identical.
+   continents. Compare their day lengths; should be nearly identical.
 3. Find a city at nearly your longitude but the opposite hemisphere. Compare
    sunrise times, then day lengths.
 4. Compute the width of one longitude degree at your latitude.

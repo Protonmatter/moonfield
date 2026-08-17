@@ -16,7 +16,7 @@ body:
     id: where
     attributes:
       label: Roughly where were you?
-      description: A region is fine — nobody needs your street.
+      description: A region is fine; nobody needs your street.
       placeholder: "Southern Chile / near Nairobi / central Japan"
   - type: textarea
     id: surprise

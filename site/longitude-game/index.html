@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Longitude Game — Moonfield</title>
+<title>The Longitude Game: Moonfield</title>
 <meta name="description" content="Why finding your longitude at sea needed a clock, and what happened when the clock was wrong.">
 <style>
 /* ---------------------------------------------------------------
@@ -74,7 +74,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
 .masthead h1 .lat{color:var(--sounding)}
 .standfirst{font-size:1.15rem;max-width:36rem;margin:0}
 
-/* the two-facts contrast — the whole premise in one glance */
+/* the two-facts contrast: the whole premise in one glance */
 .premise{
   display:grid;grid-template-columns:1fr 1fr;gap:1px;
   background:rgba(111,163,173,.25);
@@ -178,7 +178,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <h2>Fifteen degrees to the hour</h2>
   <p>Earth turns once in 24 hours, so it turns 15° every hour. That single fact is
   the whole method.</p>
-  <p>Local noon is easy to spot anywhere on Earth — the Sun is at its highest and a
+  <p>Local noon is easy to spot anywhere on Earth; the Sun is at its highest and a
   vertical stick's shadow is at its shortest. If, at that exact moment, you can read
   the time back at your reference meridian, the difference is your longitude.</p>
 
@@ -209,17 +209,17 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
       <tr><td>Longitude</td><td id="w-lon" class="num"></td></tr>
     </table>
     <p style="font-size:.92rem;color:var(--sounding);margin-top:1rem">
-    Reference clock <em>ahead</em> of your local noon means the Sun reached you later —
+    Reference clock <em>ahead</em> of your local noon means the Sun reached you later;
     you are west of the reference meridian.</p>
   </div>
 </section>
 
 <section>
-  <p class="eyebrow">Part two — the mode that matters</p>
+  <p class="eyebrow">Part two: the mode that matters</p>
   <h2>Wrong landfall</h2>
   <p>The theory above was understood by 1600. It was useless, because it needs a clock
   that keeps reference time through months of salt, damp, pitching decks and 30 °C
-  temperature swings — and pendulum clocks do not work on a moving ship at all.</p>
+  temperature swings, and pendulum clocks do not work on a moving ship at all.</p>
   <p>So the question was never <em>how</em>. It was <em>how accurate is accurate enough</em>.
   Set a clock, sail, and find out.</p>
 
@@ -228,11 +228,11 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
       <div>
         <label for="clock">Your timekeeper</label>
         <select id="clock">
-          <option value="0.1">Harrison's H4, 1761 — 0.1 s/day</option>
-          <option value="1">Good marine chronometer — 1 s/day</option>
-          <option value="4" selected>Merchant vessel's clock — 4 s/day</option>
-          <option value="15">Poorly compensated clock — 15 s/day</option>
-          <option value="60">Pendulum clock at sea — 60 s/day</option>
+          <option value="0.1">Harrison's H4, 1761: 0.1 s/day</option>
+          <option value="1">Good marine chronometer: 1 s/day</option>
+          <option value="4" selected>Merchant vessel's clock: 4 s/day</option>
+          <option value="15">Poorly compensated clock: 15 s/day</option>
+          <option value="60">Pendulum clock at sea: 60 s/day</option>
         </select>
       </div>
       <div>
@@ -459,7 +459,7 @@ function report(e){
   if (nm <= SAFE_NM){
     verdict.classList.add("safe");
     title = "Harbour, safely";
-    text = "You are " + nm.toFixed(1) + " nautical miles from where you believed you were — "
+    text = "You are " + nm.toFixed(1) + " nautical miles from where you believed you were, "
          + "inside the approach. Your clock lost " + e.errSeconds.toFixed(1)
          + " seconds over " + e.days + " days, which is " + e.errLonDeg.toFixed(3)
          + "° of longitude. At this latitude that is close enough to see the harbour lights "
@@ -468,8 +468,8 @@ function report(e){
     verdict.classList.add("rocks");
     title = "Wrong landfall";
     text = "You are " + nm.toFixed(1) + " nautical miles from where you believed you were. "
-         + "Your clock lost only " + (e.drift) + " seconds a day — an error nobody aboard could "
-         + "have detected — but over " + e.days + " days that compounded to "
+         + "Your clock lost only " + (e.drift) + " seconds a day, an error nobody aboard could "
+         + "have detected, and over " + e.days + " days that compounded to "
          + (e.errSeconds/60).toFixed(1) + " minutes, which is " + e.errLonDeg.toFixed(3)
          + "° of longitude. You made landfall in the dark, on a coast you could not identify, "
          + "confident you were somewhere else.";

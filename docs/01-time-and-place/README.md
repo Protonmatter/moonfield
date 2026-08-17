@@ -1,4 +1,4 @@
-# 01 — Time and place
+# 01: Time and place
 
 Astronomy is the study of where things are, and *where* only means something
 once you have said *when* and *from where*.
@@ -25,7 +25,7 @@ unambiguous instant, and a defined observing position.
 > where useful.**
 
 Internally, Moonfield uses UTC and Julian Day. Externally, it shows your local
-civil time — because that is what you live in — but always alongside UTC, so
+civil time (because that is what you live in), but always alongside UTC, so
 the two can never be confused.
 
 ## What this module deliberately leaves out
@@ -48,5 +48,5 @@ from where we are starting.
 
 ## Background reading
 
-- [Why UTC exists](../background/why-utc-exists.md) — the longitude problem,
+- [Why UTC exists](../background/why-utc-exists.md): the longitude problem,
   marine chronometers, and how "what time is it" became "where am I"

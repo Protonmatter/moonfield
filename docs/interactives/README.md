@@ -13,11 +13,11 @@ site.
 
 ## Planned
 
-- **Phase explorer** — drag the Moon around its orbit, watch phase and rise time
+- **Phase explorer**: drag the Moon around its orbit, watch phase and rise time
   change together
-- **Tide composer** — add harmonic constituents and watch a real tide curve
+- **Tide composer**: add harmonic constituents and watch a real tide curve
   assemble
-- **Seasons globe** — tilt the axis and see what happens to daylight by latitude
+- **Seasons globe**: tilt the axis and see what happens to daylight by latitude
 
 Want one of these? Say so in [Discussions](../../discussions).
 

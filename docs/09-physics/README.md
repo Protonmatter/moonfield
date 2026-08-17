@@ -1,4 +1,4 @@
-# 09 — The physics underneath
+# 09: The physics underneath
 
 > **Status: planned.** This module is scoped but not yet written. The scope
 > below is the commitment; it is here so you can see where the curriculum is
@@ -25,7 +25,7 @@ Mostly prose and small numerical experiments. Some derivations at Advanced layer
 
 ## Want this sooner?
 
-Say so in [Discussions](../../discussions) — demand genuinely reorders the
+Say so in [Discussions](../../discussions), demand genuinely reorders the
 queue. Better still, write a lesson: see
 [CONTRIBUTING.md](../../CONTRIBUTING.md). A single lesson following the
 [lab pattern](../00-start-here/what-is-this.md) is a complete, useful

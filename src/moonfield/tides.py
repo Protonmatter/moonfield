@@ -113,8 +113,16 @@ def lunar_day_hours() -> float:
 def spring_neap(when: _dt.datetime | float | None = None) -> tuple[float, str]:
     """How big the tides are this week, and what to call it.
 
-    Returns ``(range_factor, label)`` where the factor is relative to a mean
-    tide: about 1.32 at springs, about 0.68 at neaps.
+    Returns ``(range_factor, label)`` where the factor is the combined
+    tide-raising pull relative to the Moon's alone: about 1.46 at springs,
+    about 0.54 at neaps, and around 1.05 averaged over a month.
+
+    Those two extremes are just ``1 + r`` and ``1 - r`` for the solar ratio
+    ``r`` below, which is what the square root collapses to when the cosine
+    reaches its limits. Real spring ranges are nearer twice the neap range
+    than the 2.7 this predicts, because a real coast responds to the pull
+    through a basin of its own with its own resonances -- the same reason
+    everything else in this module needs calibrating against measurement.
 
     At new and full Moon the Sun and Moon pull along the same line and their
     bulges add together -- *spring* tides, nothing to do with the season. At the
@@ -127,8 +135,11 @@ def spring_neap(when: _dt.datetime | float | None = None) -> tuple[float, str]:
     elong = phase_engine.elongation(when)
     e = math.radians(elong)
     r = SOLAR_TIDAL_RATIO
-    combined = math.sqrt(1 + r * r + 2 * r * math.cos(2 * e))
-    factor = combined  # normalised so mean-ish is ~1.0
+    # Vector sum of the two tidal pulls, with the Sun's at angle 2*elongation
+    # to the Moon's. No normalisation is applied: the number means "relative
+    # to the Moon acting alone", so 1.0 is the Moon by itself rather than an
+    # average tide, and the monthly mean comes out slightly above it.
+    factor = math.sqrt(1 + r * r + 2 * r * math.cos(2 * e))
 
     offset = min(elong % 180.0, 180.0 - (elong % 180.0))
     if offset < 30.0:

@@ -24,7 +24,7 @@ Gravity weakens with distance. The near side of Earth is about 12,700 km closer
 to the Moon than the far side, so it is pulled slightly harder. Earth's centre
 is pulled a medium amount. The far side is pulled least.
 
-Now work in the frame of Earth's centre — subtract the centre's acceleration
+Now work in the frame of Earth's centre, subtract the centre's acceleration
 from everything. Relative to the centre:
 
 - Near-side water is pulled **towards** the Moon
@@ -38,7 +38,7 @@ itself. That single sentence resolves almost every tide misconception.
 ### Why the Sun loses
 
 Gravitational force falls off as 1/r². But the *difference* across a body falls
-off as 1/r³ — differentiate and see.
+off as 1/r³, differentiate and see.
 
 | | Mass vs Moon | Distance vs Moon | Force | Tidal effect |
 |---|---|---|---|---|
@@ -51,14 +51,14 @@ effect ends up at about 46% of the Moon's.
 
 This is why the Moon rules the tides despite being a small rock.
 
-The 1/r³ law is why tidal forces matter enormously close in — it is what tears
+The 1/r³ law is why tidal forces matter enormously close in; it is what tears
 comets apart near Jupiter and what would stretch you unpleasantly near a black
 hole.
 
 ### Two highs a day
 
 Earth rotates through both bulges every day, so most coasts see two highs and
-two lows. Not all — see [Why local tides are hard](why-local-tides-are-hard.md).
+two lows. Not all, see [Why local tides are hard](why-local-tides-are-hard.md).
 
 ---
 
@@ -80,7 +80,7 @@ moonfield tide explain
 - If Earth had no rotation, would there still be tides?
 - The Moon is slowly moving away from Earth. What happens to tides over
   millions of years?
-- Does the solid Earth have tides too? (Yes — about 30 cm. You are rising and
+- Does the solid Earth have tides too? (Yes, about 30 cm. You are rising and
   falling twice a day.)
 
 Next: [The lunar day](lunar-day.md).

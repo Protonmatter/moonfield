@@ -1,7 +1,7 @@
 # Examples
 
 Short, runnable scripts. Each one is a starting point to modify, not a finished
-tool — the point is to change something and see what happens.
+tool; the point is to change something and see what happens.
 
 | Script | What it shows |
 |---|---|

@@ -10,8 +10,8 @@
 > **Method:** Observe → predict → learn → run → change → observe → validate → explain.
 
 Moonfield is an open-source, learn-by-doing curriculum. It starts with things
-you can see from your own doorstep — the time, the Moon, the Sun, the seasons,
-which way is north — and builds them, step by step, into mathematics, astronomy,
+you can see from your own doorstep (the time, the Moon, the Sun, the seasons,
+which way is north) and builds them, step by step, into mathematics, astronomy,
 physics, orbital mechanics, rocketry and 3D visualisation.
 
 It assumes you know none of it yet. Not Python, not Git, not virtual
@@ -39,7 +39,7 @@ unstuck, we have failed and we want the issue.
 ## Try it in five minutes
 
 You need Python 3.10 or newer and Git. If you are not sure whether you have
-them, that is fine — [`docs/00-start-here/setup.md`](docs/00-start-here/setup.md)
+them, that is fine: [`docs/00-start-here/setup.md`](docs/00-start-here/setup.md)
 walks through it for Windows, macOS and Linux, assuming nothing.
 
 ```bash
@@ -89,7 +89,7 @@ Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
 
 That block is real output, not an illustration. A test in
 [`tests/test_readme.py`](tests/test_readme.py) runs that exact command and
-fails if a single character here has drifted from what the code prints —
+fails if a single character here has drifted from what the code prints,
 because a front page showing numbers the engine stopped producing would be a
 strange first impression for a project about checking your numbers against
 reality.
@@ -117,7 +117,7 @@ wrong.
 | `moonfield frame` | The "Which Way Am I Facing?" observing lab |
 | `moonfield seasons` | Day length and sunrise direction across the year |
 | `moonfield tide explain` | How tides work, and where simple models give up |
-| `moonfield tide rough` | A crude tide estimate — for learning only |
+| `moonfield tide rough` | A crude tide estimate, for learning only |
 | `moonfield tide compare` | Your model versus reality |
 | `moonfield longitude` | The Longitude Game (text version) |
 | `moonfield config` | Save your observing location |
@@ -160,9 +160,9 @@ Think About**, **Common Questions**, **Getting Stuck?** and **Go Deeper**.
 
 ### Three layers, always
 
-- **Beginner** — What do I need to make this work?
-- **Standard** — Why does it work?
-- **Advanced** — What did we simplify?
+- **Beginner**: What do I need to make this work?
+- **Standard**: Why does it work?
+- **Advanced**: What did we simplify?
 
 Take whichever layer you need today. Skipping the advanced layer is not
 cheating; the advanced layer exists so that nothing is hidden from you, not so
@@ -201,7 +201,7 @@ on a train, behind a school filter, or with the wifi off.
 
 The "Planned" modules have scaffolding, a stated scope and open issues. They
 are deliberately visible rather than hidden, so you can see where the path
-leads — and so you can help build it.
+leads, and so you can help build it.
 
 ---
 
@@ -214,7 +214,7 @@ ocean, or clear skies.
 Every lesson that could differ by location includes equatorial, mid-latitude
 northern, mid-latitude southern, Arctic and Antarctic examples. If you are in
 Nairobi or Ushuaia or Tromsø and a lesson only makes sense in Boston, that is a
-bug — please file it.
+bug. Please file it.
 
 ---
 
@@ -222,13 +222,23 @@ bug — please file it.
 
 Everything here is an approximation, and every approximation is labelled.
 
-| Engine | Method | Typical accuracy |
-|---|---|---|
-| Solar position | Meeus ch. 25, low precision | ~0.01° |
-| Lunar position | Truncated ELP-2000/82, Meeus ch. 47 | ~0.002° (a few tens of arcseconds) |
-| Moon phase | Geometric, from real positions | Within ~2 minutes of published new/full |
-| Rise and set | Iterative altitude search | Within ~1–2 minutes |
-| Tides | Equilibrium two-bulge model | **Hours wrong. Not for navigation.** |
+| Engine | Method | Measured against | Error |
+|---|---|---|---|
+| Solar position | Meeus ch. 25, low precision | Meeus example 25.b | under 0.1 arcsecond; the method is quoted at ~0.01° over a few centuries |
+| Lunar position | Truncated ELP-2000/82, Meeus ch. 47 (35 of 60 longitude terms) | Meeus example 47.a | ~2 arcseconds in position, ~12 km in distance |
+| Moon phase | Geometric, from real positions | Three published 2026 new Moons | 1.0 to 2.6 minutes |
+| Rise and set | Iterative altitude search | Published Greenwich solstice times | 1 to 2 minutes |
+| Tides | Equilibrium two-bulge model | Published Brest tide table | **over an hour, consistently. Not for navigation.** |
+
+Every number in that table is measured by
+[`tests/test_accuracy_claims.py`](tests/test_accuracy_claims.py), not
+remembered. If an engine drifts, or someone tightens a series, the test fails
+and this table gets updated with it.
+
+The lunar figure is the error at one benchmark instant, not a guarantee. We
+dropped 25 of the 60 longitude terms, each individually under 0.002°, and how
+much that costs depends on where their phases happen to sit on the day you
+ask. Two arcseconds is what it costs on 1992 April 12.
 
 That last row is not an apology, it is a lesson. The tide model is deliberately
 too simple, and [module 04](docs/04-tides/) is built around discovering exactly

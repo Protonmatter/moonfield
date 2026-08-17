@@ -1,4 +1,4 @@
-# 08 — Constellations
+# 08: Constellations
 
 > **Status: planned.** This module is scoped but not yet written. The scope
 > below is the commitment; it is here so you can see where the curriculum is
@@ -12,7 +12,7 @@ star chart for your own latitude and date.
 - What is up tonight from where you are
 - Circumpolar, seasonal, and never-visible stars for your latitude
 - Star names, Bayer letters, and catalogue numbers
-- Precession — why the star charts age
+- Precession, why the star charts age
 - Building your own chart for your horizon
 
 ## Prerequisites
@@ -21,11 +21,11 @@ star chart for your own latitude and date.
 
 ## Intended approach
 
-A small bright-star catalogue plus `observer.to_horizontal`. No new physics — this is module 05 applied at scale.
+A small bright-star catalogue plus `observer.to_horizontal`. No new physics; this is module 05 applied at scale.
 
 ## Want this sooner?
 
-Say so in [Discussions](../../discussions) — demand genuinely reorders the
+Say so in [Discussions](../../discussions), demand genuinely reorders the
 queue. Better still, write a lesson: see
 [CONTRIBUTING.md](../../CONTRIBUTING.md). A single lesson following the
 [lab pattern](../00-start-here/what-is-this.md) is a complete, useful

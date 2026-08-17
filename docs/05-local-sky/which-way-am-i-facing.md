@@ -1,6 +1,6 @@
 # Which way am I facing?
 
-**The lab for this module.** Find true north using the sky and arithmetic —
+**The lab for this module.** Find true north using the sky and arithmetic,
 no compass, no phone.
 
 **Time:** 20 minutes, needs sunshine or a visible Moon.
@@ -46,7 +46,7 @@ Azimuth is measured clockwise from **true north**: 0° = N, 90° = E, 180° = S,
 270° = W.
 
 So: face the Sun. You are facing 183.7°. To face north, turn 183.7° to your
-left — or equivalently, north is 176.3° clockwise from the Sun, which is very
+left, or equivalently, north is 176.3° clockwise from the Sun, which is very
 nearly behind you.
 
 **Never look directly at the Sun.** Use its shadow: a vertical stick's shadow
@@ -63,7 +63,7 @@ No software at all.
 3. The line from the first mark to the second points roughly **east**
 
 This works because the Sun moves westward, so the shadow sweeps eastward. It is
-crude — good to maybe 10° — but it needs nothing but a stick, and it works
+crude (good to maybe 10°), but it needs nothing but a stick, and it works
 anywhere on Earth including places where remembering "the Sun is due south at
 noon" would get you badly lost.
 
@@ -71,7 +71,7 @@ noon" would get you badly lost.
 
 ## Method 3: local solar noon
 
-The Sun is exactly on your meridian at local solar noon — due south in the
+The Sun is exactly on your meridian at local solar noon, due south in the
 northern hemisphere, due **north** in the southern.
 
 ```bash
@@ -80,7 +80,7 @@ moonfield sun --explain
 
 This prints your local solar noon, which is *not* 12:00 clock time. The
 difference comes from your longitude within your timezone plus the equation of
-time — both explained in
+time, both explained in
 [module 01](../01-time-and-place/utc-and-timezones.md).
 
 At that instant, the shadow of a vertical stick lies exactly along your
@@ -147,7 +147,7 @@ that file is refinement.
 ## Questions to think about
 
 - If you were dropped somewhere unknown, could you find your latitude from the
-  Sun alone? (Yes — see [module 06](../06-seasons/).)
+  Sun alone? (Yes, see [module 06](../06-seasons/).)
 - Why does the shadow-tip method work at *any* latitude, including the tropics
   where "the Sun is due south at noon" is sometimes false?
 

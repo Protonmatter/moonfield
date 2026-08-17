@@ -48,7 +48,7 @@ that explains most "command not found" reports.
 conventional name and is already in `.gitignore`.
 
 **It is disposable.** Delete `.venv` and recreate it any time. Nothing of value
-lives there — see [environment reset](../troubleshooting/environment-reset.md).
+lives there, see [environment reset](../troubleshooting/environment-reset.md).
 
 **Never commit it.** It contains platform-specific binaries and is often
 hundreds of megabytes.

@@ -15,7 +15,7 @@ algorithm.
 3. **Fix or improve a lesson.** Typos, unclear paragraphs, missing steps,
    examples that assume a northern hemisphere.
 4. **Write a lesson.** Especially for the planned modules 07–12.
-5. **Add tests.** Particularly for locations and dates we do not cover —
+5. **Add tests.** Particularly for locations and dates we do not cover:
    southern hemisphere, tropics, polar, date boundaries.
 6. **Fix a bug.**
 
@@ -33,7 +33,7 @@ This is not a purity test, and it is not about tooling snobbery. It is that the
 value of a lesson here lies in someone having genuinely worked out how to
 explain a thing, and the value of a line of code lies in someone being able to
 answer questions about it. Generated text is confidently wrong in exactly the
-places — sign conventions, timezone edge cases, near-identical formulae — where
+places (sign conventions, timezone edge cases, near-identical formulae) where
 a learner cannot yet catch it.
 
 If you use an assistant to check your grammar, nobody will ever know or mind.
@@ -67,15 +67,15 @@ Follow the pattern in [what-is-this.md](docs/00-start-here/what-is-this.md):
 
 ```
 Goal / Prerequisites / Time
-Observe          — something real, first
-Predict          — the learner commits, in writing
-Learn            — the concept
-Run              — the command or code
+Observe:         something real, first
+Predict:         the learner commits, in writing
+Learn:           the concept
+Run:             the command or code
 Change one variable
-Validate         — against reality or a published source
-Explain          — what the discrepancy means
-Checkpoint       — a self-check list
-Try it yourself  — extensions
+Validate:        against reality or a published source
+Explain:         what the discrepancy means
+Checkpoint:      a self-check list
+Try it yourself: extensions
 Questions to think about
 Common questions
 Go deeper
@@ -98,7 +98,7 @@ level and get a real result.
   nearly unfailable and every formula readable.
 - Dev dependencies (pytest, ruff) are fine.
 - Comment the *why* and cite sources. Every non-obvious constant should say
-  where it came from — most cite Meeus by chapter.
+  where it came from, most cite Meeus by chapter.
 - Prefer clear over clever. Someone is going to read this to learn from it.
 
 ```bash
@@ -113,10 +113,10 @@ New astronomy code needs tests. The best ones assert **physical identities**
 rather than stored numbers:
 
 ```python
-# good — survives an algorithm rewrite
+# good: survives an algorithm rewrite
 assert abs(noon_altitude - (90 - abs(lat - dec))) < 0.5
 
-# weaker — only catches changes, not errors
+# weaker: only catches changes, not errors
 assert round(altitude, 4) == 61.9243
 ```
 
@@ -135,9 +135,9 @@ Small PRs get reviewed faster. One lesson or one fix per PR.
 
 ## Discussions vs Issues
 
-- **[Discussions](../../discussions)** — questions, ideas, "am I understanding
+- **[Discussions](../../discussions)**: questions, ideas, "am I understanding
   this right?", showing off an observation. No question is too basic.
-- **[Issues](../../issues)** — something is broken, wrong, or missing.
+- **[Issues](../../issues)**: something is broken, wrong, or missing.
 
 If you are not sure, use Discussions. It can always be converted.
 

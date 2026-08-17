@@ -1,4 +1,4 @@
-# 10 — Orbital mechanics
+# 10: Orbital mechanics
 
 > **Status: planned.** This module is scoped but not yet written. The scope
 > below is the commitment; it is here so you can see where the curriculum is
@@ -24,7 +24,7 @@ From 'where is it now' to 'where will it be, and how do I get there'.
 
 ## Want this sooner?
 
-Say so in [Discussions](../../discussions) — demand genuinely reorders the
+Say so in [Discussions](../../discussions), demand genuinely reorders the
 queue. Better still, write a lesson: see
 [CONTRIBUTING.md](../../CONTRIBUTING.md). A single lesson following the
 [lab pattern](../00-start-here/what-is-this.md) is a complete, useful

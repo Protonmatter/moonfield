@@ -11,7 +11,7 @@ suffering is virtuous, but because the first five minutes is where most of the
 learning happens.
 
 After five minutes, ask. Sitting stuck for an hour is not more virtuous than
-sitting stuck for five minutes — it is just slower.
+sitting stuck for five minutes; it is just slower.
 
 ## Debugging, in order
 
@@ -26,7 +26,7 @@ Wrong longitude sign, wrong clock, wrong timezone. These cause most
 "astronomy is broken" reports.
 
 **3. Say what you expected out loud.** "I expected sunrise around 6 and got
-18." Stating the gap precisely often reveals it — 12 hours is a suspiciously
+18." Stating the gap precisely often reveals it, 12 hours is a suspiciously
 round number, and suggests a longitude sign.
 
 **4. Make it smaller.** Cut the input down until the problem disappears. The
@@ -44,12 +44,12 @@ about 06:00 and 18:00 local.
 
 A good question gets a good answer fast. Include:
 
-- **What you were trying to do** — the goal, not just the command
-- **What you ran** — the exact command, copied not retyped
-- **What happened** — the full output, in a code block
-- **What you expected** — this is the part people skip, and it is the most useful
+- **What you were trying to do**: the goal, not just the command
+- **What you ran**: the exact command, copied not retyped
+- **What happened**: the full output, in a code block
+- **What you expected**: this is the part people skip, and it is the most useful
 - **What you already tried**
-- **Your setup** — OS, Python version, and the output of `moonfield doctor`
+- **Your setup**: OS, Python version, and the output of `moonfield doctor`
 
 Use [Discussions](../../discussions) for "how does this work?" and
 [Issues](../../issues) for "this is broken."
@@ -57,7 +57,7 @@ Use [Discussions](../../discussions) for "how does this work?" and
 ## On using AI
 
 Moonfield is built to be learned without an AI assistant, and no lesson assumes
-one. If you use one anyway, that is your call — but two things are worth
+one. If you use one anyway, that is your call, but two things are worth
 knowing.
 
 First, language models are confidently wrong about astronomy fairly often.
@@ -69,7 +69,7 @@ Second, and more importantly: if an assistant hands you the answer, you have
 lost the part that was going to teach you something. The struggle is not an
 obstacle in front of the learning. It *is* the learning.
 
-If you do ask one, ask it to explain a concept — not to write your code.
+If you do ask one, ask it to explain a concept, not to write your code.
 
 ## When you are stuck on the *idea*, not the code
 

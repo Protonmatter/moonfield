@@ -8,7 +8,7 @@ you can observe.
 ## The one number
 
 Earth's rotation axis is tilted **23.44°** from the perpendicular to its orbit.
-The axis keeps pointing the same way in space all year — it does not wobble to
+The axis keeps pointing the same way in space all year; it does not wobble to
 follow the Sun.
 
 That fixed tilt, plus the orbit, produces everything.
@@ -30,9 +30,9 @@ for month in range(1, 13):
 It swings between +23.44° and −23.44° and back, once a year, roughly
 sinusoidally.
 
-- **+23.44°** — June solstice, Sun overhead at the Tropic of Cancer
-- **0°** — equinoxes, Sun overhead at the equator
-- **−23.44°** — December solstice, Tropic of Capricorn
+- **+23.44°**: June solstice, Sun overhead at the Tropic of Cancer
+- **0°**: equinoxes, Sun overhead at the equator
+- **−23.44°**: December solstice, Tropic of Capricorn
 
 The tropics are *defined* by the tilt. They are the latitudes the Sun can reach
 overhead. The polar circles at 66.56° (= 90 − 23.44) are where the Sun can stay

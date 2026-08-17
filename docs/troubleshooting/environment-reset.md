@@ -71,5 +71,5 @@ moonfield doctor
 python -m pytest
 ```
 
-Both should be clean. If the tests fail on a fresh clone, that is a real bug —
-please [open an issue](../../issues).
+Both should be clean. If the tests fail on a fresh clone, that is a real bug.
+Please [open an issue](../../issues).

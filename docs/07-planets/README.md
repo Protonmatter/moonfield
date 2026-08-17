@@ -1,4 +1,4 @@
-# 07 — Planets
+# 07: Planets
 
 > **Status: planned.** This module is scoped but not yet written. The scope
 > below is the commitment; it is here so you can see where the curriculum is
@@ -9,11 +9,11 @@ to find them tonight.
 
 ## Planned lessons
 
-- Finding a planet tonight — altitude, azimuth, and whether it is even up
+- Finding a planet tonight, altitude, azimuth, and whether it is even up
 - Elongation and why Venus is never far from the Sun
 - Retrograde motion, built from two circular orbits
 - Conjunctions and oppositions, and predicting the next one
-- Synodic periods — the same arithmetic as module 02
+- Synodic periods, the same arithmetic as module 02
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ to find them tonight.
 
 ## Want this sooner?
 
-Say so in [Discussions](../../discussions) — demand genuinely reorders the
+Say so in [Discussions](../../discussions), demand genuinely reorders the
 queue. Better still, write a lesson: see
 [CONTRIBUTING.md](../../CONTRIBUTING.md). A single lesson following the
 [lab pattern](../00-start-here/what-is-this.md) is a complete, useful

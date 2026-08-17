@@ -34,7 +34,7 @@ List as many complications as you can before reading on.
 Our calendar is optimised for social life, not arithmetic. It has:
 
 - Months of 28, 29, 30 or 31 days, in no useful pattern
-- Leap years every 4 years — except centuries, except every 400th century
+- Leap years every 4 years: except centuries, except every 400th century
 - A ten-day gap in October 1582, when much of Europe switched from the Julian
   to the Gregorian calendar
 - Different countries making that switch at different times, up to 1923
@@ -157,7 +157,7 @@ Julian Day is an example of a pattern worth recognising: **convert to a
 representation your operations are natural in, do the work, convert back.**
 
 The messy part happens once, at the boundary. Everything inside is clean
-arithmetic. You will meet this idea again — it is why we use radians internally
+arithmetic. You will meet this idea again; it is why we use radians internally
 and degrees for display, and why we compute in UTC and display local time.
 
 ---
@@ -190,7 +190,7 @@ and degrees for display, and why we compute in UTC and display local time.
 ## Common questions
 
 **Is this related to the Julian calendar?**
-Only by name, and even that is contested — Scaliger may have named it after his
+Only by name, and even that is contested, Scaliger may have named it after his
 father, Julius. The Julian Day number is calendar-independent.
 
 **Modified Julian Day?**
@@ -199,7 +199,7 @@ satellite work. Moonfield uses plain JD.
 
 ## Go deeper
 
-- Read `src/moonfield/time.py` — `julian_day` and `from_julian_day`
+- Read `src/moonfield/time.py`, `julian_day` and `from_julian_day`
 - Meeus, *Astronomical Algorithms*, chapter 7
 - [Why UTC exists](../background/why-utc-exists.md)
 

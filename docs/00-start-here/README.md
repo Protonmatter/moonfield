@@ -1,4 +1,4 @@
-# 00 — Start Here
+# 00: Start Here
 
 Welcome. This module gets you from "I have a computer" to "I ran an astronomy
 calculation and understood the answer".
@@ -22,7 +22,7 @@ You need:
 
 - A computer running Windows, macOS or Linux
 - About an hour
-- Somewhere you can see the sky, eventually — not for lesson 1
+- Somewhere you can see the sky, eventually, not for lesson 1
 
 You do **not** need:
 
@@ -36,9 +36,9 @@ You do **not** need:
 
 Each lesson has three layers. Read the one you need:
 
-- **Beginner** — what do I type to make this work?
-- **Standard** — why does it work?
-- **Advanced** — what did we simplify, and what would fix it?
+- **Beginner**: what do I type to make this work?
+- **Standard**: why does it work?
+- **Advanced**: what did we simplify, and what would fix it?
 
 Skipping Advanced is fine. It exists so nothing is hidden from you, not to make
 you feel behind.

@@ -59,8 +59,8 @@ At arm's length, roughly, for most adults:
 Hand size and arm length correlate, which is why this works across different
 people better than it has any right to.
 
-Calibrate once: find something whose altitude Moonfield can tell you — the Moon
-right now — and compare against your fists.
+Calibrate once: find something whose altitude Moonfield can tell you (the Moon
+right now) and compare against your fists.
 
 ---
 
@@ -87,7 +87,7 @@ Over a month, several of these will probably surprise you:
 **The Moon is often up in daylight.** A gibbous Moon in a blue sky is common
 and most people never notice it.
 
-**It rises later each night**, by roughly 50 minutes — but not consistently.
+**It rises later each night**, by roughly 50 minutes, but not consistently.
 The shift ranges from about 15 minutes to about 90, depending on the season and
 your latitude. That variation has a name (the Harvest Moon effect) and a cause,
 and it is in `tests/test_observer.py` if you want to skip ahead.
@@ -99,7 +99,7 @@ Over a month it swings through a wide arc.
 perpendicular to the direction of the Sun. You can find where the Sun is,
 below the horizon, from the crescent alone.
 
-**Earthshine.** Near new Moon, the dark part is faintly visible — lit by
+**Earthshine.** Near new Moon, the dark part is faintly visible, lit by
 sunlight reflected off Earth. Leonardo da Vinci worked out the cause around
 1510.
 
@@ -120,7 +120,7 @@ moonfield now
 Compare its azimuth and altitude with your fists-and-landmarks estimate. You
 will be a few degrees out; that is normal and fine.
 
-If you are wildly out — tens of degrees — check in this order:
+If you are wildly out (tens of degrees), check in this order:
 
 1. Your saved longitude sign
 2. Your clock
@@ -158,6 +158,6 @@ Over the next month:
 ## Go deeper
 
 - [Why phases happen](why-phases-happen.md)
-- [Module 05 — Your local sky](../05-local-sky/)
+- [Module 05, Your local sky](../05-local-sky/)
 
 Next: [Why phases happen](why-phases-happen.md).

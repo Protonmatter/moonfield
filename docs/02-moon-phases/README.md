@@ -1,4 +1,4 @@
-# 02 — Moon phases
+# 02: Moon phases
 
 Starts with a question you can answer by looking up: **what phase is the Moon
 in right now?** Ends with you having built the calculation yourself and
@@ -21,7 +21,7 @@ location.
 ## The observation gate
 
 Lesson 1 asks you to start a log and add to it over about a month. **Start it
-now** and keep reading — do not wait. The calculation lessons are much more
+now** and keep reading; do not wait. The calculation lessons are much more
 interesting when you have your own data to check them against, and a lunar
 cycle takes as long as it takes.
 

@@ -1,4 +1,4 @@
-# 12 — Visualisation
+# 12: Visualisation
 
 > **Status: planned.** This module is scoped but not yet written. The scope
 > below is the commitment; it is here so you can see where the curriculum is
@@ -21,11 +21,11 @@ Seeing the geometry, in 2D and then in 3D.
 
 ## Intended approach
 
-Optional dependencies only — the core install stays dependency-free. Likely matplotlib for 2D, with a browser-based 3D option so nothing needs installing.
+Optional dependencies only; the core install stays dependency-free. Likely matplotlib for 2D, with a browser-based 3D option so nothing needs installing.
 
 ## Want this sooner?
 
-Say so in [Discussions](../../discussions) — demand genuinely reorders the
+Say so in [Discussions](../../discussions), demand genuinely reorders the
 queue. Better still, write a lesson: see
 [CONTRIBUTING.md](../../CONTRIBUTING.md). A single lesson following the
 [lab pattern](../00-start-here/what-is-this.md) is a complete, useful

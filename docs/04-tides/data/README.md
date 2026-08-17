@@ -1,6 +1,6 @@
 # Tide station datasets
 
-For learners without access to tidal water — and for anyone who wants to
+For learners without access to tidal water, and for anyone who wants to
 compare coastlines that behave completely differently.
 
 ## The stations
@@ -20,9 +20,9 @@ datetime_utc,kind,height_m
 2026-08-16T11:34,low,1.18
 ```
 
-- `datetime_utc` — ISO 8601, always UTC
-- `kind` — `high` or `low`
-- `height_m` — metres above chart datum
+- `datetime_utc`: ISO 8601, always UTC
+- `kind`: `high` or `low`
+- `height_m`: metres above chart datum
 
 ## Important
 
@@ -37,8 +37,14 @@ better, and getting it is part of the lesson.
 ## Using them
 
 ```bash
-moonfield tide compare --lat 48.383 --lon -4.495 \
-    --date 2026-08-16T12:00 \
-    --observed 2026-08-16T05:12 \
-    --observed 2026-08-16T17:38
+moonfield tide compare --lat 48.383 --lon -4.495 --timezone UTC \
+    --date "2026-08-16T12:00:00Z" \
+    --observed 2026-08-16T04:06 \
+    --observed 2026-08-16T16:32
 ```
+
+Those two times are the high waters listed for 2026-08-16 in
+`brest-2026-08.csv`, so you can check them against the file yourself. The
+`--timezone UTC` matters: the `datetime_utc` column is in UTC, and without it
+your observed times would be read on your own clock and the comparison would
+be wrong by your offset.

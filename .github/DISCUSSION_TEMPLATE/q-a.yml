@@ -20,4 +20,4 @@ body:
     id: thinking
     attributes:
       label: What do you currently think the answer might be?
-      description: Optional, but a guess makes it much easier to explain — we can start from where you are rather than from scratch.
+      description: Optional, but a guess makes it much easier to explain; we can start from where you are rather than from scratch.

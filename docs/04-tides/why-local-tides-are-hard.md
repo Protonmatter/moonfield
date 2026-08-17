@@ -16,10 +16,10 @@ Africa.
 **Water cannot move fast enough.** The bulge would need to travel at about
 1,600 km/h at the equator. A shallow-water wave in a 4 km deep ocean travels at
 about 700 km/h. The ocean physically cannot keep up, so the tide is not a bulge
-riding under the Moon — it is a **wave** sloshing around basins.
+riding under the Moon; it is a **wave** sloshing around basins.
 
 **Basins resonate.** Each ocean basin has a natural period set by its size and
-depth. When that is near 12.4 hours, the tide is amplified enormously — like
+depth. When that is near 12.4 hours, the tide is amplified enormously, like
 pushing a child on a swing at the right rhythm. The Bay of Fundy resonates
 almost perfectly and gets 16-metre tides.
 
@@ -33,8 +33,8 @@ and fall take unequal times.
 ## Consequences
 
 - Most coasts: two highs a day (semidiurnal)
-- Some coasts: one (diurnal) — parts of the Gulf of Mexico, Fremantle
-- Some: two unequal (mixed) — much of the Pacific coast
+- Some coasts: one (diurnal), parts of the Gulf of Mexico, Fremantle
+- Some: two unequal (mixed), much of the Pacific coast
 - Mediterranean: almost no tide, because it is nearly enclosed
 - Bay of Fundy: 16 m
 
@@ -48,9 +48,9 @@ Not from this geometry at all. It works by **harmonic analysis**:
 3. Measure the **amplitude and phase of each one at that station**
 4. Predict by adding the waves back up
 
-The astronomy supplies the **frequencies** — those come from orbital mechanics
+The astronomy supplies the **frequencies**, those come from orbital mechanics
 and are the same everywhere. Only measurement can supply the **amplitudes and
-phases** — those are properties of the coastline.
+phases**, those are properties of the coastline.
 
 That is the deep lesson of this module:
 
@@ -70,8 +70,8 @@ That is the deep lesson of this module:
 
 - Harmonic analysis needs a year of data per station. What about uninstrumented
   coasts?
-- Could you predict tides for a coastline that does not exist yet — a planned
+- Could you predict tides for a coastline that does not exist yet, a planned
   reclamation, say?
 - What other everyday predictions are theory plus local calibration?
 
-Next: [Module 05 — Your local sky](../05-local-sky/).
+Next: [Module 05, Your local sky](../05-local-sky/).

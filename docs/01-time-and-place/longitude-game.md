@@ -1,11 +1,11 @@
-# The Longitude Game — Don't Get Lost at Sea
+# The Longitude Game: Don't Get Lost at Sea
 
-**Goal:** feel, rather than be told, that time difference *is* longitude — and
+**Goal:** feel, rather than be told, that time difference *is* longitude, and
 that a small clock error becomes a large position error.
 
 Two versions, same maths:
 
-- **Browser:** `site/longitude-game/` — open `index.html`, or visit the
+- **Browser:** `site/longitude-game/`: open `index.html`, or visit the
   project's GitHub Pages site
 - **Terminal:** `moonfield longitude`, no browser required
 
@@ -47,7 +47,7 @@ Commit to an answer. Most people get the direction wrong first time.
 ### The method
 
 1. Watch the Sun. When it stops rising and starts falling, that is **local
-   apparent noon** — the Sun is on your meridian.
+   apparent noon**; the Sun is on your meridian.
 2. At that exact instant, read your home-port chronometer.
 3. The difference is your longitude.
 
@@ -70,11 +70,17 @@ local noon means you are **west**.
 moonfield longitude --reference 14.5 --local-noon 12
 ```
 
-```
-  Reference clock at local noon: 14:30
-  Local apparent noon:           12:00
-  Difference: +2.5000 hours
+<!-- moonfield-check: longitude --reference 14.5 --local-noon 12 -->
 
+```
+  - Reference clock at local noon: 14:30
+  - Local apparent noon:           12:00
+  - Difference: +2.5000 hours
+```
+
+<!-- moonfield-check: longitude --reference 14.5 --local-noon 12 -->
+
+```
   Longitude = -(+2.5000 h) x 15 deg/h = -37.500 deg
   You are at 37.500 degrees west of your reference.
 ```
@@ -93,12 +99,16 @@ moonfield longitude --reference 14.5 --local-noon 12 --drift 600
 
 Thirty seconds of drift:
 
+<!-- moonfield-check: longitude --reference 14.5 --local-noon 12 --drift 30 -->
+
 ```
   - An error of 0.125 degrees
   - At latitude 45, that is about 9.8 km in the wrong place
 ```
 
 Ten minutes:
+
+<!-- moonfield-check: longitude --reference 14.5 --local-noon 12 --drift 600 -->
 
 ```
   - An error of 2.500 degrees
@@ -114,7 +124,7 @@ The rule of thumb worth memorising:
 > equator.**
 
 A chronometer losing one second per day is invisible on any given day, and
-thirty seconds — about 14 km — wrong after a month at sea.
+thirty seconds (about 14 km) wrong after a month at sea.
 
 ---
 
@@ -131,8 +141,8 @@ right and not exactly, because timezone borders follow politics.
 
 Why is latitude easy and longitude hard?
 
-Because Earth's rotation gives latitude a natural reference — the equator and
-the poles are physically distinguishable — while every meridian is identical.
+Because Earth's rotation gives latitude a natural reference (the equator and
+the poles are physically distinguishable) while every meridian is identical.
 There is no natural zero for longitude, so you must *carry* your reference with
 you. That is what the chronometer is: a reference you brought from home.
 
@@ -172,7 +182,7 @@ care that your clock error was small.
   Which would you have backed in 1730?
 - GPS works by comparing signal arrival times from satellites with known
   positions. How is that the same problem, and how is it different?
-- What is the modern equivalent of a drifting chronometer — a small, invisible
+- What is the modern equivalent of a drifting chronometer, a small, invisible
   error in a reference that quietly poisons everything downstream?
 
 ## Go deeper
@@ -181,4 +191,4 @@ care that your clock error was small.
 - Dava Sobel, *Longitude* (1995)
 - The browser version in `site/longitude-game/`
 
-Next: [Module 02 — Moon phases](../02-moon-phases/).
+Next: [Module 02, Moon phases](../02-moon-phases/).

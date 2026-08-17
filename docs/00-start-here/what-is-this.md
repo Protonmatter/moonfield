@@ -33,8 +33,8 @@ Every lesson follows the same loop:
 10. **Go deeper**, if you want
 
 Step 2 is the one people want to skip. Don't. A prediction written down before
-you look is a claim you can be wrong about, and finding out you were wrong — in
-writing, about something specific — is worth ten paragraphs of explanation.
+you look is a claim you can be wrong about, and finding out you were wrong (in
+writing, about something specific) is worth ten paragraphs of explanation.
 
 ## What makes this different
 
@@ -60,7 +60,7 @@ the latitude, not whether you can see the ocean.
 - **Not a telescope guide.** Everything here works with your eyes.
 - **Not astrology.** Different thing entirely.
 - **Not a substitute for professional data.** Do not navigate with it.
-- **Not a Python course** — though you will pick up Python on the way.
+- **Not a Python course**: though you will pick up Python on the way.
 - **Not linear.** Skip around. The dependency notes tell you what a lesson
   actually needs.
 
@@ -84,16 +84,16 @@ There is no schedule. But roughly:
 
 | Module | Rough time |
 |---|---|
-| 00 — Start here | 1 hour |
-| 01 — Time and place | 2 hours |
-| 02 — Moon phases | 3 hours, plus a month of occasional looking up |
-| 03 — Earth-Moon system | 2 hours |
-| 04 — Tides | 3 hours, plus observation |
-| 05 — Local sky | 3 hours, mostly outdoors |
-| 06 — Seasons | 2 hours, plus a year if you want to see it properly |
+| 00: Start here | 1 hour |
+| 01: Time and place | 2 hours |
+| 02: Moon phases | 3 hours, plus a month of occasional looking up |
+| 03: Earth-Moon system | 2 hours |
+| 04: Tides | 3 hours, plus observation |
+| 05: Local sky | 3 hours, mostly outdoors |
+| 06: Seasons | 2 hours, plus a year if you want to see it properly |
 
 Some of this is genuinely gated on the sky. You cannot watch a full lunar cycle
-in an afternoon. That is fine — start the observation log early and keep
+in an afternoon. That is fine, start the observation log early and keep
 reading in the meantime.
 
 ## Checkpoint

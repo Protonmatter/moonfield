@@ -6,18 +6,18 @@
 
 ## Two coordinate systems
 
-**Equatorial** — right ascension and declination. Fixed to the stars, the same
+**Equatorial**: right ascension and declination. Fixed to the stars, the same
 for everyone on Earth. This is what `sun.position()` and `moon.position()`
 return.
 
-**Horizontal** — altitude and azimuth. Angle above your horizon, and compass
+**Horizontal**: altitude and azimuth. Angle above your horizon, and compass
 bearing. Depends on where you are *and* what time it is.
 
 Every "where do I look?" question is a conversion from the first to the second.
 
 ## The hour angle
 
-The bridge is **local sidereal time** — how far the sky has turned at your
+The bridge is **local sidereal time**, how far the sky has turned at your
 longitude:
 
 ```
@@ -36,13 +36,13 @@ sin(altitude) = sin(lat)·sin(dec) + cos(lat)·cos(dec)·cos(H)
 tan(azimuth) = sin(H) / (cos(H)·sin(lat) − tan(dec)·cos(lat))
 ```
 
-That is the whole conversion. Everything else — refraction, parallax — is a
+That is the whole conversion. Everything else (refraction, parallax) is a
 correction on top.
 
 ## Refraction
 
 Air bends light, lifting objects slightly. It is negligible overhead and about
-**0.57°** at the horizon — larger than the Sun itself.
+**0.57°** at the horizon, larger than the Sun itself.
 
 The consequence: when you see the Sun touching the horizon, it is geometrically
 already fully below it. Every sunrise you have ever watched, you were looking at

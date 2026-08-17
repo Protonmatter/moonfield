@@ -11,9 +11,9 @@ touching any equations.
 
 You need:
 
-- A lamp with the shade off, or a torch — this is the Sun
-- A ball: an orange, a tennis ball, anything round — this is the Moon
-- Your head — this is Earth
+- A lamp with the shade off, or a torch: this is the Sun
+- A ball, an orange, a tennis ball, anything round: this is the Moon
+- Your head: this is Earth
 
 Put the lamp on one side of the room. Stand a few metres away, holding the ball
 at arm's length.
@@ -62,7 +62,7 @@ never moved, and it always illuminated exactly one hemisphere.
 What changed is **how much of the lit half you could see**.
 
 This is the whole of lunar phases. There is nothing else in it. The phase is not
-a property of the Moon — it is a property of the *angle* between you, the Moon,
+a property of the Moon; it is a property of the *angle* between you, the Moon,
 and the Sun.
 
 That angle has a name, **elongation**, and it is the quantity every phase
@@ -113,8 +113,8 @@ why is there not a solar eclipse every month?
 
 Because the Moon's orbit is tilted about 5.1° to Earth's orbital plane. Most
 new Moons, the Moon passes above or below the Sun rather than across it. Only
-when new Moon happens near one of the two **nodes** — the points where the
-orbits cross — do you get an eclipse.
+when new Moon happens near one of the two **nodes** (the points where the
+orbits cross) do you get an eclipse.
 
 That tilt is why `moon.position()` returns an ecliptic *latitude* as well as a
 longitude. Check it: it swings between about ±5.1°.
@@ -126,7 +126,7 @@ longitude. Check it: it swings between about ±5.1°.
 Back to the lamp. Now tilt the ball's circular path slightly, so it passes
 above the lamp on one side and below on the other.
 
-Notice that the "new Moon" position no longer blocks the lamp — the ball goes
+Notice that the "new Moon" position no longer blocks the lamp; the ball goes
 above it. That is why most new Moons are not eclipses. Adjust the tilt until it
 does line up, and you have found a node.
 
@@ -157,7 +157,7 @@ the terminator edge-on, straight down the boundary between lit and unlit. Any
 other angle and you see some of the lit side curving toward or away from you.
 
 And that is why the terminator on a crescent is *curved* while on a half Moon it
-is *straight*. It is the same circle — the edge of the lit hemisphere — seen at
+is *straight*. It is the same circle (the edge of the lit hemisphere) seen at
 different angles. A circle seen at an angle is an ellipse; seen edge-on, a
 straight line.
 
@@ -177,7 +177,7 @@ straight line.
 
 ## Try it yourself
 
-1. Do the lamp experiment. Actually do it — it is much better than reading it.
+1. Do the lamp experiment. Actually do it; it is much better than reading it.
 2. Predict tonight's moonrise time from the phase alone, then check
 3. From a photo of a crescent, work out which way the Sun is
 4. Explain the phases to someone else using only your hands
@@ -189,7 +189,7 @@ straight line.
 - What phase is Earth in, seen from the Moon, when we see a full Moon here?
 - If the Moon's orbit were not tilted, how often would eclipses happen?
 - Why do we always see the same face of the Moon? (Different question,
-  different cause — tidal locking, module 03.)
+  different cause: tidal locking, module 03.)
 
 ## Common questions
 
@@ -199,12 +199,12 @@ shadow only touches the Moon during a lunar eclipse, which is rare. The dark
 part of a normal Moon is simply the half not facing the Sun.
 
 **Why can I sometimes faintly see the dark part?**
-Earthshine — sunlight reflected off Earth onto the Moon. Best on a thin
+Earthshine, sunlight reflected off Earth onto the Moon. Best on a thin
 crescent.
 
 ## Go deeper
 
 - [Calculating a phase](calculating-phase.md)
-- [Module 03 — The Earth-Moon system](../03-earth-moon-system/)
+- [Module 03, The Earth-Moon system](../03-earth-moon-system/)
 
 Next: [Calculating a phase](calculating-phase.md).

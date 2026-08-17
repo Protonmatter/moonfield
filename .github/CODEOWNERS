@@ -1,7 +1,7 @@
 # Every pull request gets a review. This file routes them.
 #
 # Note for anyone reading this to understand the project's structure:
-# CODEOWNERS and branch protection govern *workflow* — who must approve what.
+# CODEOWNERS and branch protection govern *workflow*: who must approve what.
 # They are not a secrecy mechanism. Everything in this repository is public.
 # Instructor material that should not be visible to learners (solutions,
 # assessment rubrics, marking schemes) lives in a separate private repository.

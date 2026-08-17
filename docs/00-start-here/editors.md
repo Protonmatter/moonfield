@@ -9,7 +9,7 @@ changing the code.
 ## What is an editor? What is an IDE?
 
 An **editor** is a program for writing text files. Code is text files. Word
-processors are not suitable — they add invisible formatting that breaks code.
+processors are not suitable, they add invisible formatting that breaks code.
 
 An **IDE** (Integrated Development Environment) is an editor plus extra tools:
 running code, debugging, autocomplete, jumping to a function's definition.
@@ -33,11 +33,11 @@ An editor helps when you want to:
 
 Already installed, no setup, work over SSH.
 
-- **nano** — the friendly one. Commands are listed at the bottom. `Ctrl+O` to
+- **nano**: the friendly one. Commands are listed at the bottom. `Ctrl+O` to
   save, `Ctrl+X` to exit. If you have never used a terminal editor, start here.
-- **vim** — powerful, and famously hard to *exit*. (It is `:q!`.) Worth learning
+- **vim**: powerful, and famously hard to *exit*. (It is `:q!`.) Worth learning
   eventually, not today.
-- **micro** — modern feel, familiar shortcuts. Needs installing.
+- **micro**: modern feel, familiar shortcuts. Needs installing.
 
 ```bash
 nano src/moonfield/phase.py
@@ -45,10 +45,10 @@ nano src/moonfield/phase.py
 
 ### Graphical editors
 
-- **VS Code** — free, popular, excellent Python support. The usual first choice.
-- **VSCodium** — VS Code without Microsoft's telemetry.
-- **PyCharm Community** — free, Python-specific, heavier but very capable.
-- **Cursor**, **Zed**, **Sublime Text** — all fine.
+- **VS Code**: free, popular, excellent Python support. The usual first choice.
+- **VSCodium**: VS Code without Microsoft's telemetry.
+- **PyCharm Community**: free, Python-specific, heavier but very capable.
+- **Cursor**, **Zed**, **Sublime Text**: all fine.
 
 Whatever you already know is the right answer. Nothing here requires a
 particular one.
@@ -65,7 +65,7 @@ from the app store, and one inside each project's virtual environment.
 
 When you activate `.venv` in a terminal, you tell *that terminal* to use *that*
 Python. But your editor is a separate program. It does not know what your
-terminal did. Unless you tell it, it may use a completely different Python —
+terminal did. Unless you tell it, it may use a completely different Python,
 one where Moonfield is not installed.
 
 That produces the classic confusing symptom:
@@ -80,7 +80,7 @@ Nothing is broken. The editor is just looking in the wrong place.
 1. Open the `moonfield` folder (File → Open Folder)
 2. `Ctrl+Shift+P` (`Cmd+Shift+P` on macOS)
 3. Type "Python: Select Interpreter"
-4. Choose the one with `.venv` in its path — usually marked "Recommended"
+4. Choose the one with `.venv` in its path, usually marked "Recommended"
 
 The chosen interpreter shows in the bottom status bar. If it does not say
 `.venv`, that is your problem.
@@ -110,7 +110,7 @@ If you want VS Code configured for this project and nothing more:
 2. Install the **Python** extension by Microsoft
 3. Open the `moonfield` folder
 4. Select the `.venv` interpreter as above
-5. Open a terminal inside VS Code (`Ctrl+` `` ` ``) — it usually activates the
+5. Open a terminal inside VS Code (`Ctrl+` `` ` ``): it usually activates the
    venv automatically
 
 That is all. Skip the rest of the extension marketplace for now.
@@ -136,4 +136,4 @@ That is all. Skip the rest of the extension marketplace for now.
 
 [Getting Unstuck](../troubleshooting/getting-unstuck.md)
 
-Next: [Module 01 — Time and place](../01-time-and-place/).
+Next: [Module 01, Time and place](../01-time-and-place/).

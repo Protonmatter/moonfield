@@ -37,6 +37,15 @@ Keep this. You will want it in a moment.
 moonfield phase
 ```
 
+Your output will show today's Moon, not the one below. To see exactly this
+run, pin the instant the way the rest of this page does:
+
+```bash
+moonfield phase --date "2026-08-16T21:00:00Z" --timezone Europe/London --no-art
+```
+
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
 Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
 
@@ -44,7 +53,7 @@ Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
   Illuminated:  19.9% of the visible disc
   Age:          4 days 3 hours 22 minutes since new Moon
   Trend:        waxing (growing)
-  Distance:     382,283 km
+  Distance:     387,412 km
 ```
 
 ---
@@ -53,24 +62,28 @@ Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
 
 ### The heading
 
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
 Moon phase for 2026-08-16 22:00 BST  (2026-08-16 21:00 UTC)
 ```
 
 Two times, for one instant.
 
-**BST** is British Summer Time — a civil timezone. **UTC** is Coordinated
+**BST** is British Summer Time, a civil timezone. **UTC** is Coordinated
 Universal Time, the reference everyone shares. Moonfield always shows both,
 because a time without a timezone is not a real instant. "9pm" happens at
 twenty-something different moments around the world.
 
 All the calculation happens in UTC. The local time is shown only because it is
-what you actually live in. This convention — *compute in an unambiguous
-representation, display local time where useful* — holds throughout the project.
+what you actually live in. This convention (*compute in an unambiguous
+representation, display local time where useful*) holds throughout the project.
 
 Module 01 covers why this matters so much.
 
 ### Phase
+
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
 
 ```
   Phase:        Waxing Crescent
@@ -97,6 +110,8 @@ lit.
 
 ### Illuminated
 
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
   Illuminated:  19.9% of the visible disc
 ```
@@ -110,6 +125,8 @@ lit part.
 
 ### Age
 
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
   Age:          4 days 3 hours 22 minutes since new Moon
 ```
@@ -119,21 +136,25 @@ number runs from 0 to 29.5 and then resets.
 
 ### Trend
 
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
   Trend:        waxing (growing)
 ```
 
-Which way it is going. Useful because a photograph of a crescent is ambiguous —
+Which way it is going. Useful because a photograph of a crescent is ambiguous,
 a waxing and a waning crescent look identical apart from which side is lit.
 
 ### Distance
 
+<!-- moonfield-check: phase --date 2026-08-16T21:00:00Z --timezone Europe/London --no-art -->
+
 ```
-  Distance:     382,283 km
+  Distance:     387,412 km
 ```
 
 The Moon's orbit is an ellipse, not a circle. It ranges from about 356,500 km
-(perigee) to 406,700 km (apogee) — a variation of about 14%. That is why some
+(perigee) to 406,700 km (apogee), a variation of about 14%. That is why some
 full Moons look noticeably bigger.
 
 ### The drawing
@@ -145,7 +166,7 @@ straight terminator; a crescent has a curved one.
 
 > **Southern hemisphere:** if you have set a southern location, the drawing
 > flips. This is not a cosmetic touch. Seen from Sydney, the Moon genuinely
-> appears rotated compared to London — a waxing crescent is lit on the *left*,
+> appears rotated compared to London; a waxing crescent is lit on the *left*,
 > not the right. Nothing changed about the Moon; you are standing upside down
 > relative to the other observer.
 
@@ -199,7 +220,7 @@ Moon's position, the subtraction, the conversion to a percentage. It also shows
 you a *second*, much simpler model, and how far apart the two are.
 
 Do not worry about following all of it yet. Module 02 builds it up properly.
-Notice, for now, that it can be followed — there is no step that says "and then
+Notice, for now, that it can be followed; there is no step that says "and then
 magic happens".
 
 ---
@@ -217,7 +238,7 @@ If it disagrees badly, the most likely causes in order are:
 1. Your computer's clock or timezone is wrong
 2. You are comparing different instants (an almanac's "today" may be a
    different UTC day from yours)
-3. A genuine bug — in which case please
+3. A genuine bug, in which case please
    [open an issue](https://github.com/Protonmatter/moonfield/issues), including
    both numbers and your `moonfield doctor` output
 
@@ -236,7 +257,7 @@ If it disagrees badly, the most likely causes in order are:
 
 1. Find the phase on the day you were born
 2. Find a date this year with a full Moon
-3. Run `moonfield phase --date` for the same day across three different years —
+3. Run `moonfield phase --date` for the same day across three different years;
    is the phase the same? Why not?
 4. Compare `moonfield phase` today and in exactly 29 days. How close is it?
 5. Find a date where the Moon is closest to Earth this year
@@ -259,7 +280,7 @@ Because it computed it rather than rounding to something friendly. The extra
 digit is a reminder that this is a calculation, not a lookup.
 
 **Can I get output for another location?**
-`phase` is the same everywhere on Earth — the illuminated fraction does not
+`phase` is the same everywhere on Earth; the illuminated fraction does not
 depend on where you stand. Where the Moon *appears in your sky* very much does;
 that is `moonfield now` and module 05.
 
@@ -276,7 +297,7 @@ machine.
 
 ## Go deeper
 
-- [Module 02 — Moon phases](../02-moon-phases/) — build this calculation yourself
+- [Module 02 (Moon phases](../02-moon-phases/)) build this calculation yourself
 - [How accurate is Moonfield?](../background/accuracy.md)
 
 Next: [Pre-flight check](pre-flight.md).

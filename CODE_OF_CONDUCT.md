@@ -26,14 +26,14 @@ Everything below follows from that.
 - Discriminatory language or imagery of any kind
 - Sexual language or imagery
 - Publishing others' private information
-- Mocking a question for being basic — this one is taken seriously here
+- Mocking a question for being basic; this one is taken seriously here
 - Sustained disruption of discussion
 - Deliberately posting incorrect astronomy as a joke
 
 ## Scope
 
-Applies in all project spaces — issues, discussions, pull requests, commits,
-code comments — and when representing the project elsewhere.
+Applies in all project spaces (issues, discussions, pull requests, commits,
+code comments) and when representing the project elsewhere.
 
 ## Reporting
 
@@ -47,8 +47,8 @@ Do not report through a public issue.
 
 Maintainers will use judgement proportionate to the incident:
 
-1. **Correction** — a private note explaining what was wrong
-2. **Warning** — with a defined period of no interaction with those involved
+1. **Correction**: a private note explaining what was wrong
+2. **Warning**: with a defined period of no interaction with those involved
 3. **Temporary ban**
 4. **Permanent ban**
 

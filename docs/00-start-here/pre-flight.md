@@ -10,7 +10,7 @@ know it is the astronomy and not your setup.
 ## Why this exists
 
 Later in this curriculum you will make a prediction, go outside, and find it
-does not match. That moment is the most valuable one in the whole project — but
+does not match. That moment is the most valuable one in the whole project, but
 only if you can trust your instruments.
 
 If your clock is ten minutes fast, or your longitude sign is backwards, or you
@@ -37,8 +37,8 @@ Work down its output.
   - Version is new enough (need 3.10+). OK
 ```
 
-Check that the path contains `.venv`. If it points somewhere else — like
-`/usr/bin/python3` or `C:\Python312\` — your virtual environment is not active,
+Check that the path contains `.venv`. If it points somewhere else (like
+`/usr/bin/python3` or `C:\Python312\`) your virtual environment is not active,
 and you are installing and running things in the wrong place.
 
 ### Virtual environment
@@ -79,7 +79,7 @@ Three things to verify by eye:
 Check the **hemisphere letters**, not just the numbers.
 
 This is where the classic error shows up. If you are in Chicago and it says
-`87.6298E`, your longitude sign is wrong — you have been placed in central
+`87.6298E`, your longitude sign is wrong; you have been placed in central
 China. Everything about your local sky will be wrong by about twelve hours, in
 a way that looks mysterious rather than obviously broken.
 
@@ -106,11 +106,11 @@ your computer what time it is and then checking the answer against your
 computer is not a test.
 
 **Why it matters:** a one-minute clock error moves the sky by a quarter of a
-degree — half the width of the Moon. A ten-minute error moves it two and a half
+degree, half the width of the Moon. A ten-minute error moves it two and a half
 degrees, which is enough to make a careful observation disagree with a correct
 prediction.
 
-**How to actually check:** compare your clock against something independent —
+**How to actually check:** compare your clock against something independent:
 a radio time signal, a phone on mobile network time, or an online clock. Most
 operating systems have a setting like "Set time automatically"; switch it on.
 
@@ -170,7 +170,7 @@ Beyond the doctor, confirm these yourself once:
 ## Go deeper
 
 - [Why UTC exists](../background/why-utc-exists.md)
-- [Module 01 — Time and place](../01-time-and-place/)
+- [Module 01, Time and place](../01-time-and-place/)
 
 Next: [Editors and IDEs](editors.md), or skip straight to
 [Module 01](../01-time-and-place/).

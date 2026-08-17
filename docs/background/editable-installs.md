@@ -20,9 +20,9 @@ eventually you will edit a file, see no change, and lose twenty minutes.
 pip install -e ".[dev]"
 ```
 
-- `-e` — editable
-- `.` — this directory, using its `pyproject.toml`
-- `[dev]` — also install the optional dev extras (pytest, ruff)
+- `-e`: editable
+- `.`: this directory, using its `pyproject.toml`
+- `[dev]`: also install the optional dev extras (pytest, ruff)
 
 The quotes matter in zsh, which is the default shell on macOS: without them,
 zsh tries to interpret the square brackets as a glob pattern.

@@ -1,14 +1,14 @@
 # Windows
 
 Moonfield supports Windows natively (PowerShell) and through WSL. Both work.
-Pick one and stay with it — mixing them is where confusion starts.
+Pick one and stay with it, mixing them is where confusion starts.
 
 ## Which should I use?
 
-**Native PowerShell** — simpler, no extra install, fine for everything in this
+**Native PowerShell**: simpler, no extra install, fine for everything in this
 curriculum. Recommended if you are new.
 
-**WSL** — a real Linux environment inside Windows. Worth it if you already use
+**WSL**: a real Linux environment inside Windows. Worth it if you already use
 Linux tooling, or want commands in tutorials to work verbatim.
 
 Note that they have **separate filesystems and separate Python installs**. A
@@ -24,7 +24,7 @@ Check:
 python --version
 ```
 
-If it still fails, close and reopen PowerShell — PATH changes need a new
+If it still fails, close and reopen PowerShell, PATH changes need a new
 session.
 
 ## "cannot be loaded because running scripts is disabled"
@@ -47,7 +47,7 @@ The venv is probably not active. Your prompt should start with `(.venv)`.
 .\.venv\Scripts\Activate.ps1
 ```
 
-Note the backslashes and the leading `.\` — PowerShell will not run a script in
+Note the backslashes and the leading `.\`, PowerShell will not run a script in
 the current directory without it.
 
 ## Terminal shows boxes instead of the Moon

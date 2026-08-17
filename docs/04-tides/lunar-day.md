@@ -13,7 +13,7 @@ shouldn't high tide be at the same time every day?
 
 ## Learn
 
-While Earth turns once, the Moon moves along its orbit — about 13.2° per day.
+While Earth turns once, the Moon moves along its orbit, about 13.2° per day.
 So after 24 hours, the Moon is not where it was. Earth must turn about 13.2°
 further to bring it back overhead.
 
@@ -25,7 +25,7 @@ The **lunar day** is 24 h 50.5 min. That is the tidal clock, and it is why tide
 tables march forward through the week instead of repeating.
 
 This is the *same* effect as the synodic/sidereal month gap from
-[module 02](../02-moon-phases/synodic-and-sidereal.md) — one moving thing
+[module 02](../02-moon-phases/synodic-and-sidereal.md), one moving thing
 measured against another moving reference.
 
 ## Run
@@ -34,7 +34,7 @@ measured against another moving reference.
 moonfield tide rough
 ```
 
-Look at the predicted events: consecutive highs are about 12 h 25 min apart —
+Look at the predicted events: consecutive highs are about 12 h 25 min apart,
 half a lunar day.
 
 ## Checkpoint

@@ -55,7 +55,7 @@ moonfield config path
 
 ## Apple Silicon
 
-Everything here is pure Python — no compiled dependencies, so there are no
+Everything here is pure Python, no compiled dependencies, so there are no
 architecture issues. This is one of the payoffs of the zero-dependency design.
 
 ## See also

@@ -59,7 +59,7 @@ print(f"aphelion   {far[0]:%d %b}  {far[1]:.5f} AU")
 print(f"variation  {(far[1] - near[1]) / near[1] * 100:.2f}%")
 ```
 
-Earth is **closest to the Sun in early January** — northern midwinter — and
+Earth is **closest to the Sun in early January** (northern midwinter) and
 furthest in early July. Exactly backwards for the northern hemisphere.
 
 The variation is about **3.4%**, giving roughly 7% in received energy. Real, but
@@ -92,7 +92,7 @@ sunlight.
 
 ## Test it with a torch
 
-Shine a torch straight down onto paper — small bright circle. Tilt it to 20° —
+Shine a torch straight down onto paper, small bright circle. Tilt it to 20°,
 the light smears into a long dim ellipse. Same torch, same power, far less
 energy per square centimetre.
 
@@ -103,10 +103,10 @@ That is summer and winter.
 ## Why the misconception survives
 
 It is not stupid. It is a reasonable inference from a true fact: closer to a
-heat source *is* warmer. The mistake is not the physics but a missing check —
+heat source *is* warmer. The mistake is not the physics but a missing check,
 "does this explain everything I know?" It does not explain Australia.
 
-That habit — testing an explanation against a case it should also cover — is
+That habit (testing an explanation against a case it should also cover) is
 the actual transferable skill here.
 
 ---

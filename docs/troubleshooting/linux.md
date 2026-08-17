@@ -19,7 +19,7 @@ Arch has it in the base Python package already.
 
 ## "externally-managed-environment"
 
-Recent distros protect the system Python. Use a venv — that is the intended
+Recent distros protect the system Python. Use a venv; that is the intended
 answer:
 
 ```bash
@@ -64,7 +64,7 @@ falling back to `~/.config/moonfield/config.json`.
 moonfield config path
 ```
 
-You can override it entirely with the `MOONFIELD_CONFIG` environment variable —
+You can override it entirely with the `MOONFIELD_CONFIG` environment variable,
 useful if you want separate configs for different observing sites.
 
 ## Headless / server

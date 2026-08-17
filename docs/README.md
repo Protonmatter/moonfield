@@ -2,7 +2,7 @@
 
 ## Start here
 
-New? Go to [00 — Start here](00-start-here/). It assumes nothing.
+New? Go to [00, Start here](00-start-here/). It assumes nothing.
 
 ## Curriculum
 
@@ -23,11 +23,11 @@ New? Go to [00 — Start here](00-start-here/). It assumes nothing.
 | 12 | [Visualisation](12-visualization/) | Planned |
 
 Planned modules have their scope written down so you can see where this is
-going — and tell us if the plan is wrong.
+going, and tell us if the plan is wrong.
 
 ## When you are stuck
 
-- [Getting unstuck](troubleshooting/getting-unstuck.md) — start here
+- [Getting unstuck](troubleshooting/getting-unstuck.md): start here
 - [Glossary](troubleshooting/glossary.md)
 - [Command cheat sheet](troubleshooting/cheat-sheet.md)
 - [Environment reset](troubleshooting/environment-reset.md)

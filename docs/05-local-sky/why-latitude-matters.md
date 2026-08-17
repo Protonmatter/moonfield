@@ -27,7 +27,7 @@ for place in places:
 ```
 
 On the June solstice: Longyearbyen has no sunset at all, Ushuaia gets about
-seven hours of daylight, and Quito gets twelve — as it does every single day of
+seven hours of daylight, and Quito gets twelve, as it does every single day of
 the year.
 
 ---
@@ -41,7 +41,7 @@ altitude = 90° − |latitude − declination|
 ```
 
 At Greenwich in June: 90 − |51.5 − 23.4| = 61.9°. In December: 15.1°. A
-threefold difference in how directly sunlight arrives — which is what
+threefold difference in how directly sunlight arrives, which is what
 [module 06](../06-seasons/) is about.
 
 **Circumpolar stars.** Objects with declination greater than 90° − |latitude|
@@ -84,4 +84,4 @@ documentation bug worth reporting.
 2. Find the lowest declination star that is circumpolar from your location
 3. Find the latitude where the Sun is exactly overhead today
 
-Next: [Module 06 — Seasons](../06-seasons/).
+Next: [Module 06, Seasons](../06-seasons/).
