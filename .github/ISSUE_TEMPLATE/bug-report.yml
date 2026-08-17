@@ -1,0 +1,45 @@
+name: Bug report
+description: The software behaves incorrectly.
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For "the sky disagrees with the output", please use the
+        **Observation doesn't match** template instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+      description: And why — a source, a calculation, or a physical argument.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The smallest command or script that shows the problem.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `moonfield doctor`
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Does `python -m pytest` pass?
+      render: shell
+    validations:
+      required: false

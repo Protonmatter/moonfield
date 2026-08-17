@@ -1,0 +1,28 @@
+name: Learning question (please use Discussions instead)
+description: Redirects to Discussions, where questions get better answers.
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Questions belong in [Discussions](../../discussions)
+
+        Not because they are unwelcome — the opposite. Discussions are
+        searchable, threaded, and other learners find them later. Issues get
+        closed and disappear.
+
+        **No question is too basic.** That is a project commitment, not a
+        politeness.
+
+        If you have already tried Discussions and got nowhere, carry on below.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: input
+    id: lesson
+    attributes:
+      label: Which lesson prompted it?

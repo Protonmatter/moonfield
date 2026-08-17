@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      # The install must work for a complete beginner on any of these
+      # platforms. These are the first commands a new learner types, so a
+      # failure here is a setup-documentation failure, not just a code one.
+      - name: Smoke test the CLI
+        run: |
+          moonfield --version
+          moonfield doctor
+          moonfield phase --no-art --lat 51.48 --lon 0.0
+          moonfield sun --lat -33.87 --lon 151.21
+          moonfield moon --lat 0.0 --lon 0.0
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: ruff check src tests
+
+  no-runtime-dependencies:
+    name: Verify zero runtime dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Moonfield promises it installs with nothing but the standard library.
+      # This job installs the package alone, with no dev extras, and imports
+      # every module. If a dependency ever creeps in, this fails.
+      - name: Install without extras
+        run: pip install .
+      - name: Import everything
+        run: |
+          python -c "
+          import moonfield
+          from moonfield import time, location, sun, moon, phase, observer, tides, cli
+          print('all modules import cleanly:', moonfield.__version__)
+          "

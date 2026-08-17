@@ -1,0 +1,62 @@
+name: Setup help
+description: You cannot get Moonfield installed or running.
+title: "[Setup] "
+labels: ["setup", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Setup problems are our problem, not yours. If the instructions did not
+        work, the instructions need fixing.
+
+        Worth a quick look first:
+        [Windows](../../blob/main/docs/troubleshooting/windows.md) ·
+        [macOS](../../blob/main/docs/troubleshooting/macos.md) ·
+        [Linux](../../blob/main/docs/troubleshooting/linux.md)
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows (PowerShell)
+        - Windows (WSL)
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      description: Output of `python --version` or `python3 --version`
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: What you ran
+      description: The exact command, copied rather than retyped.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What happened
+      description: The full output, including the whole error message.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you have already tried
+    validations:
+      required: false
+  - type: input
+    id: step
+    attributes:
+      label: Which step of the setup guide were you on?
+      placeholder: "Step 3, creating the virtual environment"

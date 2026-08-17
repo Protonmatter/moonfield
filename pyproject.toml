@@ -1,0 +1,91 @@
+# Packaging for Moonfield.
+#
+# If you have never seen one of these before: this file tells Python's
+# packaging tools what this project is called, what it needs, and where the
+# code lives. You do not have to understand it to use Moonfield -- but it is
+# short, and every line is explained.
+
+[build-system]
+# The tools used to turn this directory into an installable package.
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moonfield"
+version = "0.1.0"
+description = "Learn the sky by running code you fully understand."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "The Moonfield contributors" }]
+keywords = [
+    "astronomy", "education", "moon", "phases", "tides",
+    "seasons", "orbital-mechanics", "learning",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Astronomy",
+]
+
+# Runtime dependencies: deliberately none.
+#
+# Every formula in this project is implemented from a cited source in plain
+# Python, using only the standard library. That is a teaching decision, not a
+# performance one. If you want to know how a number was produced, you can read
+# it -- you never hit a wall labelled "and then a library does something".
+#
+# It also means installation cannot fail because a compiler is missing, which
+# matters a lot when the person installing has never used a terminal before.
+dependencies = []
+
+[project.optional-dependencies]
+# Only needed if you are working ON Moonfield, not if you are learning FROM it.
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/moonfield/moonfield"
+Documentation = "https://github.com/moonfield/moonfield/tree/main/docs"
+Issues = "https://github.com/moonfield/moonfield/issues"
+Discussions = "https://github.com/moonfield/moonfield/discussions"
+
+[project.scripts]
+# This is what creates the `moonfield` command in your terminal after you run
+# `pip install -e .`. It points the name `moonfield` at the `main` function in
+# `src/moonfield/cli.py`.
+moonfield = "moonfield.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 95
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+# A001/A005: our modules `time.py` and `phase.py` shadow standard-library
+# names. That is intentional -- the blueprint names them, they read naturally,
+# and Python 3's absolute imports make it safe. See the note in time.py.
+ignore = ["E501"]
+
+[tool.coverage.run]
+source = ["moonfield"]
+branch = true

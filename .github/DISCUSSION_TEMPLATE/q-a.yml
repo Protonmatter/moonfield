@@ -1,0 +1,23 @@
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **No question is too basic here.** If you are wondering it, someone else
+        is too, and they are searching for exactly this thread.
+  - type: textarea
+    id: question
+    attributes:
+      label: What would you like to understand?
+    validations:
+      required: true
+  - type: input
+    id: lesson
+    attributes:
+      label: Which lesson or command prompted it?
+      placeholder: "docs/02-moon-phases/calculating-phase.md"
+  - type: textarea
+    id: thinking
+    attributes:
+      label: What do you currently think the answer might be?
+      description: Optional, but a guess makes it much easier to explain — we can start from where you are rather than from scratch.

@@ -1,0 +1,24 @@
+labels: ["show-and-tell"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Observations, plots, logs, failed predictions, photographs. We would
+        genuinely like to see them, and a prediction that turned out wrong is
+        more interesting than one that did not.
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you do or observe?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Roughly where were you?
+      description: A region is fine — nobody needs your street.
+      placeholder: "Southern Chile / near Nairobi / central Japan"
+  - type: textarea
+    id: surprise
+    attributes:
+      label: Did anything surprise you?

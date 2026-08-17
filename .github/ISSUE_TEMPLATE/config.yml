@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: I have a question about the astronomy
+    url: https://github.com/OWNER/moonfield/discussions/categories/q-a
+    about: Questions belong in Discussions. No question is too basic — this is a learning project.
+  - name: I want to show what I observed
+    url: https://github.com/OWNER/moonfield/discussions/categories/show-and-tell
+    about: Share your observations, plots and logs. We would like to see them.
+  - name: I am stuck and not sure why
+    url: https://github.com/OWNER/moonfield/discussions/categories/help
+    about: Start here if you are not sure whether it is you or the code.

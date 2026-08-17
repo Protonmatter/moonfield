@@ -1,0 +1,56 @@
+name: Lesson or feature proposal
+description: Suggest a new lesson, lab, interactive, or capability.
+title: "[Proposal] "
+labels: ["proposal", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals are welcome, including from people who do not intend to
+        implement them.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you proposing
+      options:
+        - A new lesson
+        - A new lab or exercise
+        - An interactive
+        - A new capability in the code
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What question does it answer?
+      description: Every lesson here starts from a question a learner would actually ask.
+      placeholder: "Why does the Moon sometimes look enormous when it is near the horizon?"
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What can a learner do afterwards that they could not before?
+    validations:
+      required: true
+  - type: input
+    id: module
+    attributes:
+      label: Which module would it belong to?
+      placeholder: "05-local-sky, or a new module"
+  - type: textarea
+    id: observation
+    attributes:
+      label: What could a learner observe or run to check it?
+      description: Moonfield lessons are built on prediction and validation, so there needs to be something to validate against.
+    validations:
+      required: true
+  - type: checkboxes
+    id: commitments
+    attributes:
+      label: Fit with the project
+      options:
+        - label: This works without assuming a hemisphere, country, or coastline
+        - label: This can be done with the standard library only (if it involves code)
+        - label: I would be interested in writing this myself

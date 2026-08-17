@@ -1,0 +1,64 @@
+name: Observation doesn't match
+description: You looked at the sky, and Moonfield disagreed with it.
+title: "[Observation] "
+labels: ["observation-mismatch", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These are among the most valuable reports we get — either the code is
+        wrong, or a lesson failed to explain something it should have.
+
+        Either way we want to know. Please run `moonfield doctor` first, since
+        it catches the three most common causes.
+  - type: textarea
+    id: observed
+    attributes:
+      label: What you actually saw
+      description: Where you were looking, roughly when, and what was there.
+      placeholder: "At 21:40 the Moon was low in the west, maybe one fist above the horizon."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What Moonfield said
+      description: Paste the command and its full output.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Your location
+      description: "Latitude and longitude, east-positive. A town name is fine too."
+      placeholder: "51.48, -0.00 (Greenwich)"
+    validations:
+      required: true
+  - type: input
+    id: time
+    attributes:
+      label: Date and time of the observation
+      description: Include your timezone, or give it in UTC.
+      placeholder: "2026-08-16 21:40 BST"
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `moonfield doctor`
+      render: shell
+    validations:
+      required: true
+  - type: dropdown
+    id: horizon
+    attributes:
+      label: Is your horizon obstructed in that direction?
+      description: Hills, buildings and trees shift rise and set times considerably.
+      options:
+        - "Clear to the horizon"
+        - "Some obstruction (buildings, trees)"
+        - "Significant obstruction (hills, mountains)"
+        - "Not sure"
+    validations:
+      required: true

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Longitude Game — Moonfield</title>
+<meta name="description" content="Why finding your longitude at sea needed a clock, and what happened when the clock was wrong.">
+<style>
+/* ---------------------------------------------------------------
+   Palette: an admiralty chart read by binnacle lamp at night.
+   Deep water, sounding-ink, brass lamp, and the red of a rock hazard.
+   --------------------------------------------------------------- */
+:root{
+  --abyss:#08161e;
+  --water:#0d2836;
+  --shelf:#14384a;
+  --sounding:#6fa3ad;
+  --ink:#c9dde1;
+  --lamp:#f0bd63;
+  --lamp-dim:#8a6a33;
+  --rocks:#d1495b;
+  --safe:#5fbf8f;
+
+  --display:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  --body:Georgia,"Iowan Old Style","Times New Roman",serif;
+
+  --rule:1px solid rgba(111,163,173,.28);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--abyss);
+  /* faint depth contours, drawn not decorated: they mark the shelf */
+  background-image:
+    repeating-linear-gradient(180deg,transparent 0 118px,rgba(111,163,173,.05) 118px 119px),
+    radial-gradient(ellipse at 50% -10%,rgba(240,189,99,.09),transparent 60%);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem 6rem}
+
+/* ---- shared type ---- */
+.eyebrow{
+  font-family:var(--display);
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--sounding);
+  margin:0 0 .6rem;
+}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;letter-spacing:-.01em}
+p{max-width:34rem}
+a{color:var(--lamp)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--lamp);outline-offset:3px
+}
+
+/* ---- masthead ---- */
+.masthead{padding:4.5rem 0 3rem;border-bottom:var(--rule)}
+.masthead h1{
+  font-size:clamp(2.1rem,7vw,4.2rem);
+  margin:0 0 1.2rem;
+  color:#fff;
+}
+.masthead h1 .lat{color:var(--sounding)}
+.standfirst{font-size:1.15rem;max-width:36rem;margin:0}
+
+/* the two-facts contrast — the whole premise in one glance */
+.premise{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(111,163,173,.25);
+  border:var(--rule);
+  margin:2.6rem 0 0;
+}
+.premise>div{background:var(--water);padding:1.4rem 1.3rem}
+.premise .k{font-family:var(--display);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sounding)}
+.premise .v{font-family:var(--display);font-size:1.5rem;margin:.4rem 0 .2rem;color:#fff}
+.premise .n{font-size:.95rem;color:var(--sounding);margin:0;line-height:1.45}
+.premise .hard .v{color:var(--rocks)}
+@media(max-width:640px){.premise{grid-template-columns:1fr}}
+
+/* ---- sections ---- */
+section{padding:3.5rem 0;border-bottom:var(--rule)}
+section h2{font-size:1.6rem;margin:0 0 1rem;color:#fff}
+
+/* ---- instrument panel ---- */
+.panel{
+  background:var(--water);
+  border:var(--rule);
+  border-top:2px solid var(--lamp-dim);
+  padding:1.6rem;
+  margin:2rem 0 0;
+}
+.controls{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+label{display:block;font-family:var(--display);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sounding);margin-bottom:.5rem}
+input[type=range]{width:100%;accent-color:var(--lamp)}
+select,input[type=number]{
+  width:100%;font-family:var(--display);font-size:1rem;
+  background:var(--abyss);color:var(--ink);
+  border:var(--rule);border-radius:0;padding:.5rem .6rem;
+}
+.readout{font-family:var(--display);font-size:1.35rem;color:var(--lamp);margin-top:.35rem}
+.readout small{font-size:.75rem;color:var(--sounding);letter-spacing:.06em}
+
+/* ---- the chart strip: true vs believed position ---- */
+.chart{margin:2rem 0 0}
+.chart svg{width:100%;height:auto;display:block;border:var(--rule);background:var(--water)}
+
+/* ---- result ---- */
+.verdict{
+  font-family:var(--display);
+  border-left:3px solid var(--sounding);
+  padding:1rem 1.2rem;margin:1.6rem 0 0;
+  background:rgba(111,163,173,.06);
+}
+.verdict.safe{border-left-color:var(--safe)}
+.verdict.rocks{border-left-color:var(--rocks)}
+.verdict h3{margin:0 0 .5rem;font-size:1.15rem;color:#fff}
+.verdict.rocks h3{color:var(--rocks)}
+.verdict.safe h3{color:var(--safe)}
+.verdict p{font-family:var(--body);margin:0;max-width:40rem;font-size:1rem}
+
+button{
+  font-family:var(--display);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--lamp);color:var(--abyss);
+  border:0;border-radius:0;padding:.85rem 1.6rem;margin-top:1.6rem;
+  cursor:pointer;
+}
+button:hover{background:#fff}
+button[disabled]{background:var(--lamp-dim);color:var(--water);cursor:default}
+
+/* ---- data table ---- */
+table{width:100%;border-collapse:collapse;font-family:var(--display);font-size:.92rem;margin-top:1.4rem}
+th,td{text-align:left;padding:.55rem .7rem;border-bottom:var(--rule)}
+th{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sounding);font-weight:400}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+
+.foot{padding:3rem 0 0;font-size:.95rem;color:var(--sounding)}
+.foot a{color:var(--lamp)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Moonfield · Interactive 01</p>
+  <h1>Your latitude is<br><span class="lat">a morning's work.</span><br>Your longitude is<br>two centuries.</h1>
+  <p class="standfirst">Both are angles. Both locate you on the same sphere. One of them was
+  solved by antiquity, and the other killed people by the thousand until 1761.</p>
+
+  <div class="premise">
+    <div>
+      <p class="k">Latitude</p>
+      <p class="v">Read from the sky</p>
+      <p class="n">Measure the Sun's height at noon. Subtract from 90. Adjust for the season.
+      Everything you need is overhead.</p>
+    </div>
+    <div class="hard">
+      <p class="k">Longitude</p>
+      <p class="v">Requires a memory</p>
+      <p class="n">You must know what time it is <em>somewhere else</em>, right now.
+      Nothing overhead will tell you that. You have to carry it with you.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <p class="eyebrow">Part one</p>
+  <h2>Fifteen degrees to the hour</h2>
+  <p>Earth turns once in 24 hours, so it turns 15° every hour. That single fact is
+  the whole method.</p>
+  <p>Local noon is easy to spot anywhere on Earth — the Sun is at its highest and a
+  vertical stick's shadow is at its shortest. If, at that exact moment, you can read
+  the time back at your reference meridian, the difference is your longitude.</p>
+
+  <div class="panel">
+    <p class="eyebrow" style="margin-bottom:1.2rem">Chronometer reading at local noon</p>
+    <div class="controls">
+      <div>
+        <label for="refh">Hours</label>
+        <input id="refh" type="range" min="0" max="23" value="16" step="1">
+        <p class="readout"><span id="refh-v">16</span><small> h</small></p>
+      </div>
+      <div>
+        <label for="refm">Minutes</label>
+        <input id="refm" type="range" min="0" max="59" value="0" step="1">
+        <p class="readout"><span id="refm-v">00</span><small> m</small></p>
+      </div>
+      <div>
+        <label>Your longitude</label>
+        <p class="readout" id="lon-out">60.00° W</p>
+        <p class="n" id="lon-place" style="font-family:var(--body);font-size:.92rem;color:var(--sounding);margin:.3rem 0 0"></p>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>Step</th><th>Working</th></tr>
+      <tr><td>Difference from noon</td><td id="w-diff" class="num"></td></tr>
+      <tr><td>Convert at 15°/hour</td><td id="w-conv" class="num"></td></tr>
+      <tr><td>Longitude</td><td id="w-lon" class="num"></td></tr>
+    </table>
+    <p style="font-size:.92rem;color:var(--sounding);margin-top:1rem">
+    Reference clock <em>ahead</em> of your local noon means the Sun reached you later —
+    you are west of the reference meridian.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Part two — the mode that matters</p>
+  <h2>Wrong landfall</h2>
+  <p>The theory above was understood by 1600. It was useless, because it needs a clock
+  that keeps reference time through months of salt, damp, pitching decks and 30 °C
+  temperature swings — and pendulum clocks do not work on a moving ship at all.</p>
+  <p>So the question was never <em>how</em>. It was <em>how accurate is accurate enough</em>.
+  Set a clock, sail, and find out.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <div>
+        <label for="clock">Your timekeeper</label>
+        <select id="clock">
+          <option value="0.1">Harrison's H4, 1761 — 0.1 s/day</option>
+          <option value="1">Good marine chronometer — 1 s/day</option>
+          <option value="4" selected>Merchant vessel's clock — 4 s/day</option>
+          <option value="15">Poorly compensated clock — 15 s/day</option>
+          <option value="60">Pendulum clock at sea — 60 s/day</option>
+        </select>
+      </div>
+      <div>
+        <label for="days">Days at sea</label>
+        <input id="days" type="range" min="5" max="120" value="60" step="1">
+        <p class="readout"><span id="days-v">60</span><small> days</small></p>
+      </div>
+      <div>
+        <label for="lat">Latitude of landfall</label>
+        <input id="lat" type="range" min="0" max="70" value="50" step="1">
+        <p class="readout"><span id="lat-v">50</span><small>° N</small></p>
+      </div>
+    </div>
+
+    <button id="sail">Make landfall</button>
+
+    <div class="chart">
+      <svg id="strip" viewBox="0 0 900 190" role="img"
+           aria-labelledby="strip-title strip-desc">
+        <title id="strip-title">Believed position against true position at landfall</title>
+        <desc id="strip-desc">A strip of coastline showing the harbour, the rocks, and where the ship actually arrives.</desc>
+
+        <!-- water -->
+        <rect x="0" y="0" width="900" height="120" fill="#0d2836"/>
+        <!-- land -->
+        <path d="M0,120 L900,120 L900,190 L0,190 Z" fill="#14384a"/>
+        <line x1="0" y1="120" x2="900" y2="120" stroke="#6fa3ad" stroke-width="1"/>
+
+        <!-- harbour -->
+        <g id="harbour">
+          <rect x="586" y="120" width="28" height="10" fill="#5fbf8f"/>
+          <text x="600" y="150" fill="#5fbf8f" font-family="ui-monospace,monospace"
+                font-size="13" text-anchor="middle">HARBOUR</text>
+        </g>
+
+        <!-- rocks: drawn as hazard ticks along the rest of the coast -->
+        <g id="rocks" fill="#d1495b" opacity=".85">
+          <path d="M40,120 l9,-13 l9,13 Z"/><path d="M120,120 l9,-13 l9,13 Z"/>
+          <path d="M200,120 l9,-13 l9,13 Z"/><path d="M280,120 l9,-13 l9,13 Z"/>
+          <path d="M360,120 l9,-13 l9,13 Z"/><path d="M440,120 l9,-13 l9,13 Z"/>
+          <path d="M700,120 l9,-13 l9,13 Z"/><path d="M780,120 l9,-13 l9,13 Z"/>
+          <path d="M840,120 l9,-13 l9,13 Z"/>
+        </g>
+
+        <!-- believed track -->
+        <line id="believed" x1="600" y1="6" x2="600" y2="112"
+              stroke="#6fa3ad" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="600" y="20" id="believed-label" fill="#6fa3ad" font-family="ui-monospace,monospace"
+              font-size="12" text-anchor="middle">where you think you are</text>
+
+        <!-- actual ship -->
+        <g id="ship">
+          <path d="M-11,0 l22,0 l-5,9 l-12,0 Z" fill="#f0bd63"/>
+          <line x1="0" y1="0" x2="0" y2="-14" stroke="#f0bd63" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="verdict" id="verdict" aria-live="polite">
+      <h3>Set your clock and sail</h3>
+      <p>Nothing has gone wrong yet.</p>
+    </div>
+
+    <table>
+      <tr><th>Quantity</th><th>Value</th></tr>
+      <tr><td>Clock error accumulated</td><td class="num" id="r-err"></td></tr>
+      <tr><td>Longitude error</td><td class="num" id="r-lon"></td></tr>
+      <tr><td>Distance error at this latitude</td><td class="num" id="r-dist"></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Part three</p>
+  <h2>What this is really about</h2>
+  <p><strong>Time and position are the same problem.</strong> That is not a metaphor.
+  It is why <code>moonfield doctor</code> checks your clock before it trusts any of your
+  coordinates, and why GPS is, underneath, a constellation of atomic clocks broadcasting
+  the time.</p>
+  <p><strong>Small errors integrate.</strong> Four seconds a day sounds like nothing.
+  Nobody could feel it. Over a two-month crossing it is a degree of longitude, and a
+  degree of longitude is the difference between a harbour and a reef.</p>
+  <p><strong>The hard part was not the physics.</strong> Everyone understood the method
+  for a century and a half. The problem was building a clock that survived a ship, and
+  that took John Harrison roughly forty years and four attempts.</p>
+
+  <div class="foot">
+    <p>Run the same thing in the terminal:</p>
+    <p style="font-family:var(--display);color:var(--ink)">moonfield longitude --drift 4</p>
+    <p><a href="../../docs/interactives/longitude-game.md">Lesson notes</a> ·
+       <a href="../../docs/background/why-utc-exists.md">Why UTC exists</a> ·
+       <a href="../">Moonfield</a></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+"use strict";
+
+/* ---------- Part one: reading a longitude ---------- */
+
+const refh = document.getElementById("refh");
+const refm = document.getElementById("refm");
+
+function pad(n){ return String(n).padStart(2,"0"); }
+
+function updateLongitude(){
+  const h = +refh.value, m = +refm.value;
+  document.getElementById("refh-v").textContent = pad(h);
+  document.getElementById("refm-v").textContent = pad(m);
+
+  // Hours the reference clock is ahead of (or behind) local noon.
+  let diff = (h + m/60) - 12;
+  if (diff > 12) diff -= 24;
+  if (diff < -12) diff += 24;
+
+  const lon = -diff * 15;                 // ahead of noon => west => negative
+  const hemi = lon < 0 ? "W" : lon > 0 ? "E" : "";
+  document.getElementById("lon-out").textContent =
+      Math.abs(lon).toFixed(2) + "° " + hemi;
+
+  document.getElementById("w-diff").textContent =
+      (diff >= 0 ? "+" : "\u2212") + Math.abs(diff).toFixed(3) + " h";
+  document.getElementById("w-conv").textContent =
+      Math.abs(diff).toFixed(3) + " × 15 = " + Math.abs(lon).toFixed(2) + "°";
+  document.getElementById("w-lon").textContent =
+      Math.abs(lon).toFixed(2) + "° " + hemi;
+
+  document.getElementById("lon-place").textContent = nearestPlace(lon);
+}
+
+// A few reference meridians, so the number lands somewhere real.
+const PLACES = [
+  [-157.9,"near Honolulu"], [-122.4,"near San Francisco"], [-99.1,"near Mexico City"],
+  [-74.0,"near New York"], [-58.4,"near Buenos Aires"], [-43.2,"near Rio de Janeiro"],
+  [-18.0,"mid-Atlantic"], [-6.3,"near Dublin"], [0,"on the Greenwich meridian"],
+  [2.4,"near Paris"], [18.4,"near Cape Town"], [31.2,"near Cairo"],
+  [55.3,"near Dubai"], [72.9,"near Mumbai"], [100.5,"near Bangkok"],
+  [116.4,"near Beijing"], [139.7,"near Tokyo"], [151.2,"near Sydney"],
+  [174.8,"near Auckland"]
+];
+
+function nearestPlace(lon){
+  let best = PLACES[0], bestd = 400;
+  for (const p of PLACES){
+    const d = Math.abs(p[0] - lon);
+    if (d < bestd){ bestd = d; best = p; }
+  }
+  return bestd < 6 ? "That meridian runs " + best[1] + "." : "";
+}
+
+refh.addEventListener("input", updateLongitude);
+refm.addEventListener("input", updateLongitude);
+updateLongitude();
+
+
+/* ---------- Part two: wrong landfall ---------- */
+
+const clockSel = document.getElementById("clock");
+const daysIn   = document.getElementById("days");
+const latIn    = document.getElementById("lat");
+const ship     = document.getElementById("ship");
+const believed = document.getElementById("believed");
+const verdict  = document.getElementById("verdict");
+
+const HARBOUR_X = 600;     // svg units
+const NM_PER_UNIT = 0.55;  // nautical miles per svg unit
+const SAFE_NM = 15;        // half-width of the harbour approach
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function currentErrors(){
+  const drift = +clockSel.value;
+  const days  = +daysIn.value;
+  const lat   = +latIn.value;
+
+  const errSeconds = drift * days;
+  const errLonDeg  = (errSeconds / 3600) * 15;
+  // A degree of longitude is 60 nm at the equator, shrinking with cos(latitude).
+  const errNm = errLonDeg * 60 * Math.cos(lat * Math.PI / 180);
+  return { drift, days, lat, errSeconds, errLonDeg, errNm };
+}
+
+function updateReadouts(){
+  document.getElementById("days-v").textContent = daysIn.value;
+  document.getElementById("lat-v").textContent  = latIn.value;
+
+  const e = currentErrors();
+  document.getElementById("r-err").textContent =
+      e.errSeconds.toFixed(1) + " s  (" + (e.errSeconds/60).toFixed(1) + " min)";
+  document.getElementById("r-lon").textContent = e.errLonDeg.toFixed(3) + "°";
+  document.getElementById("r-dist").textContent = e.errNm.toFixed(1) + " nautical miles";
+}
+
+function place(el, x, y){ el.setAttribute("transform", "translate(" + x + "," + y + ")"); }
+
+function sail(){
+  const e = currentErrors();
+  const offsetUnits = Math.min(e.errNm / NM_PER_UNIT, 560);
+  const finalX = HARBOUR_X - offsetUnits;   // clock runs slow => you think you are east of truth
+
+  const btn = document.getElementById("sail");
+  btn.disabled = true;
+
+  const start = performance.now();
+  const duration = reduceMotion ? 0 : 2600;
+
+  function frame(now){
+    const t = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    place(ship, HARBOUR_X + (finalX - HARBOUR_X) * eased, 60 + 45 * eased);
+    if (t < 1) requestAnimationFrame(frame);
+    else { report(e); btn.disabled = false; }
+  }
+  requestAnimationFrame(frame);
+}
+
+function report(e){
+  const nm = e.errNm;
+  verdict.classList.remove("safe","rocks");
+
+  let title, text;
+  if (nm <= SAFE_NM){
+    verdict.classList.add("safe");
+    title = "Harbour, safely";
+    text = "You are " + nm.toFixed(1) + " nautical miles from where you believed you were — "
+         + "inside the approach. Your clock lost " + e.errSeconds.toFixed(1)
+         + " seconds over " + e.days + " days, which is " + e.errLonDeg.toFixed(3)
+         + "° of longitude. At this latitude that is close enough to see the harbour lights "
+         + "and correct by eye.";
+  } else {
+    verdict.classList.add("rocks");
+    title = "Wrong landfall";
+    text = "You are " + nm.toFixed(1) + " nautical miles from where you believed you were. "
+         + "Your clock lost only " + (e.drift) + " seconds a day — an error nobody aboard could "
+         + "have detected — but over " + e.days + " days that compounded to "
+         + (e.errSeconds/60).toFixed(1) + " minutes, which is " + e.errLonDeg.toFixed(3)
+         + "° of longitude. You made landfall in the dark, on a coast you could not identify, "
+         + "confident you were somewhere else.";
+  }
+  verdict.innerHTML = "<h3>" + title + "</h3><p>" + text + "</p>";
+}
+
+clockSel.addEventListener("change", updateReadouts);
+daysIn.addEventListener("input", updateReadouts);
+latIn.addEventListener("input", updateReadouts);
+document.getElementById("sail").addEventListener("click", sail);
+
+place(ship, HARBOUR_X, 60);
+updateReadouts();
+</script>
+</body>
+</html>

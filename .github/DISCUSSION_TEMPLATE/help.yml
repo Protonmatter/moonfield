@@ -1,0 +1,32 @@
+labels: ["help"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Being stuck is normal. See
+        [getting unstuck](../../blob/main/docs/troubleshooting/getting-unstuck.md)
+        for the general approach.
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened instead?
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: The most useful box on this form.
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you already tried?

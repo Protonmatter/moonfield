@@ -1,0 +1,44 @@
+name: Documentation problem
+description: A lesson is unclear, wrong, or missing something.
+title: "[Docs] "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Confusion is a documentation bug.** If a lesson lost you, that is a
+        defect in the lesson, and you are the only person who can report it.
+  - type: input
+    id: page
+    attributes:
+      label: Which page
+      placeholder: "docs/04-tides/predict-check-explain.md"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem
+      options:
+        - I could not follow it
+        - Something is factually wrong
+        - A step is missing
+        - It assumes knowledge I do not have
+        - It assumes a hemisphere, country, or coastline
+        - A link is broken
+        - Typo or formatting
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What went wrong
+      description: Quote the passage if you can. "I did not know what X meant" is a complete and useful report.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would have helped
+    validations:
+      required: false

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moonfield — learn the sky by running code you understand</title>
+<meta name="description" content="An open, AI-free, learn-by-doing curriculum in astronomy, maths and physics. Start from nothing. Predict, run, validate, explain.">
+<style>
+:root{
+  --abyss:#08161e; --water:#0d2836; --sounding:#6fa3ad;
+  --ink:#c9dde1; --lamp:#f0bd63; --rocks:#d1495b;
+  --display:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  --body:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --rule:1px solid rgba(111,163,173,.28);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--abyss);color:var(--ink);font-family:var(--body);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse at 50% -10%,rgba(240,189,99,.09),transparent 60%);}
+.wrap{max-width:58rem;margin:0 auto;padding:0 1.5rem 6rem}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15}
+p{max-width:34rem}
+a{color:var(--lamp)}
+a:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}
+.eyebrow{font-family:var(--display);font-size:.7rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sounding);margin:0 0 .6rem}
+header{padding:5rem 0 3rem;border-bottom:var(--rule)}
+header h1{font-size:clamp(2.2rem,7vw,4rem);margin:0 0 1.2rem;color:#fff}
+.standfirst{font-size:1.2rem;max-width:36rem}
+.term{font-family:var(--display);background:var(--water);border:var(--rule);
+  border-top:2px solid rgba(240,189,99,.5);padding:1.2rem 1.4rem;margin:2.5rem 0 0;
+  font-size:.95rem;overflow-x:auto;white-space:pre;color:var(--ink)}
+.term .c{color:var(--lamp)}
+.term .o{color:var(--sounding)}
+section{padding:3.5rem 0;border-bottom:var(--rule)}
+section h2{font-size:1.55rem;margin:0 0 1rem;color:#fff}
+.grid{display:grid;gap:1px;background:rgba(111,163,173,.25);border:var(--rule);
+  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:2rem}
+.grid>div{background:var(--water);padding:1.3rem}
+.grid h3{font-size:1rem;margin:0 0 .5rem;color:var(--lamp)}
+.grid p{font-size:.95rem;margin:0;color:var(--ink)}
+ol.modules{list-style:none;padding:0;font-family:var(--display);font-size:.95rem;margin-top:1.5rem}
+ol.modules li{display:flex;gap:1rem;padding:.6rem 0;border-bottom:var(--rule);align-items:baseline}
+ol.modules .n{color:var(--sounding);font-size:.8rem;min-width:2rem}
+ol.modules .s{margin-left:auto;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+.ready{color:#5fbf8f}.planned{color:var(--sounding)}
+.note{border-left:3px solid var(--rocks);padding:.2rem 0 .2rem 1.2rem;margin-top:2rem}
+footer{padding:3rem 0 0;color:var(--sounding);font-size:.95rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Open curriculum · No prior knowledge assumed</p>
+  <h1>Moonfield teaches the sky by running code you fully understand.</h1>
+  <p class="standfirst">Astronomy, maths and physics from a standing start. You predict
+  first, run second, and then go outside and find out whether reality agreed with you.</p>
+
+  <div class="term"><span class="c">$ moonfield phase</span>
+
+       _.-''-._
+     .'  <span class="o">::::.</span> `.
+    :   <span class="o">::::::::</span>  :
+    :   <span class="o">::::::::</span>  :
+     `.  <span class="o">::::::</span> .'
+       `-.____.-'
+
+  <span class="o">Waxing crescent · 16.4% lit · 4.1 days old</span>
+  <span class="o">Sets 22:14 · 41° W of the Sun</span></div>
+</header>
+
+<section>
+  <p class="eyebrow">The method</p>
+  <h2>Observe, predict, run, validate, explain</h2>
+  <p>Every lesson makes you commit to an answer before it shows you one. Then it
+  makes you check that answer against the actual sky, and explain the gap.</p>
+  <p>The gap is the point. A model that agrees with reality teaches you one thing;
+  a model that disagrees, and tells you why, teaches you how modelling works.</p>
+
+  <div class="grid">
+    <div><h3>No AI required</h3><p>Nothing here assumes an assistant. The struggle is not
+      an obstacle in front of the learning — it is the learning.</p></div>
+    <div><h3>No dependencies</h3><p>Standard library only. Every formula is readable,
+      and installation almost cannot fail.</p></div>
+    <div><h3>Global by default</h3><p>No assumed hemisphere, country, daylight saving,
+      or access to a coastline.</p></div>
+    <div><h3>Limits stated</h3><p>Every model says what it assumes and where it breaks.
+      The tide model is deliberately inadequate, and explains why.</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Curriculum</p>
+  <h2>Thirteen modules, six written</h2>
+  <ol class="modules">
+    <li><span class="n">00</span><span>Start here</span><span class="s ready">Ready</span></li>
+    <li><span class="n">01</span><span>Time and place</span><span class="s ready">Ready</span></li>
+    <li><span class="n">02</span><span>Moon phases</span><span class="s ready">Ready</span></li>
+    <li><span class="n">03</span><span>The Earth–Moon system</span><span class="s ready">Ready</span></li>
+    <li><span class="n">04</span><span>Tides</span><span class="s ready">Ready</span></li>
+    <li><span class="n">05</span><span>Your local sky</span><span class="s ready">Ready</span></li>
+    <li><span class="n">06</span><span>Seasons</span><span class="s ready">Ready</span></li>
+    <li><span class="n">07</span><span>Planets</span><span class="s planned">Planned</span></li>
+    <li><span class="n">08</span><span>Constellations</span><span class="s planned">Planned</span></li>
+    <li><span class="n">09</span><span>The physics underneath</span><span class="s planned">Planned</span></li>
+    <li><span class="n">10</span><span>Orbital mechanics</span><span class="s planned">Planned</span></li>
+    <li><span class="n">11</span><span>Rocketry</span><span class="s planned">Planned</span></li>
+    <li><span class="n">12</span><span>Visualisation</span><span class="s planned">Planned</span></li>
+  </ol>
+</section>
+
+<section>
+  <p class="eyebrow">Try it without installing anything</p>
+  <h2>The Longitude Game</h2>
+  <p>Latitude is a morning's work. Longitude took two centuries and cost thousands of
+  lives. Find out why — and then set a clock that drifts four seconds a day, sail for
+  two months, and see which coast you hit.</p>
+  <p><a href="longitude-game/">Play the Longitude Game →</a></p>
+</section>
+
+<section>
+  <p class="eyebrow">Start</p>
+  <h2>Five minutes to your first prediction</h2>
+  <div class="term"><span class="c">git clone https://github.com/OWNER/moonfield.git</span>
+<span class="c">cd moonfield</span>
+<span class="c">python3 -m venv .venv && source .venv/bin/activate</span>
+<span class="c">pip install -e ".[dev]"</span>
+<span class="c">moonfield doctor</span></div>
+
+  <div class="note">
+    <p style="margin:0"><strong>Not for navigation.</strong> Moonfield is a teaching tool.
+    Its tide model in particular is wrong by hours and metres, on purpose, and the
+    curriculum explains exactly why.</p>
+  </div>
+</section>
+
+<footer>
+  <p><a href="https://github.com/OWNER/moonfield">Repository</a> ·
+     <a href="https://github.com/OWNER/moonfield/discussions">Discussions</a> ·
+     MIT licensed</p>
+</footer>
+
+</div>
+</body>
+</html>
